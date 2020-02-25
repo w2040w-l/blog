@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="/static/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
+<script src="/js/app.js"></script>
 <title>@yield('title')</title>
 @yield('appheader')
 </head>
