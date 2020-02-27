@@ -9,7 +9,7 @@
                 <div class='row'>
                     <div class='col-md-10 col-md-offset-1'>{!! nl2br($answer->content) !!}</div>
                 </div>
-                <div class='pull-right'>
+                <div class='float-right'>
                     <a  href='/question/{{ $question->id }}/answer/{{ $answer->id }}'>
                         updated_at {{ $answer->updated_at }}</a>
                 </div>
@@ -18,7 +18,7 @@
                 <div class='align-bottom'>
                     <ul class='list-inline'>
                         @if(Auth::check())
-                            <li>
+                            <li class='list-inline-item'>
                             <form class="" method="post" action="/answer/{{ $answer->id }}/approve">
                                 @csrf
                                 @if(\App\Model\User::find(Auth::id())->haveapp($answer->id))
@@ -32,14 +32,14 @@
                             <button class='btn btn-default btn-sm' >{{ $answer->approves()->count() }}</br>upvote</button>
                         @endif
                         </li>
-                        <li>
-                        <a class="btn btn-default " data-toggle="collapse" href="#collapse{{ $answer->id }}" role="button" aria-expanded="false" aria-controls="collapse{{ $answer->id }}"> {{ $answer->comments()->count() }} comments</a>
+                        <li class='list-inline-item'>
+                        <a class="btn btn-default btn-sm" data-toggle="collapse" href="#collapse{{ $answer->id }}" role="button" aria-expanded="false" aria-controls="collapse{{ $answer->id }}"> {{ $answer->comments()->count() }} comments</a>
                         </li>
                         @if(Auth::id() == $answer->user->id)
-                            <li>
+                            <li class='list-inline-item'>
                             <a class='btn btn-sm btn-default ' href='/question/{{ $question->id }}/answer/{{ $answer->id }}/edit'>edit</a>
                             </li>
-                            <li>
+                            <li class='list-inline-item'>
                             <form class="form-inline " method="post" action="/question/{{ $question->id }}/answer/{{ $answer->id }}">
                                 @csrf
                                 @method("delete")
@@ -60,7 +60,7 @@
                             <a href='/user/{{ $comment->user->id }}'>{{ $comment->user->username }}</a>:
                             {{ $comment->content }}</div>
                         @if(Auth::id() == $comment->user->id)
-                            <form class="form-inline pull-right" method="post" action="/question/{{ $question->id }}/answer/{{ $answer->id }}/comment/{{ $comment->id }}">
+                            <form class="form-inline float-right" method="post" action="/question/{{ $question->id }}/answer/{{ $answer->id }}/comment/{{ $comment->id }}">
                                 @csrf
                                 @method("delete")
                                 <button type='submit' class='btn btn-danger btn-link' >delete</button>

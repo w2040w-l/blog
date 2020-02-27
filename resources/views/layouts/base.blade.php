@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="/static/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="/static/assets/global/plugins/bootstrap/css/bootstrap4.4.1.min.css" rel="stylesheet" type="text/css"/>
 <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
 <script src="/js/app.js"></script>
 <title>@yield('title')</title>
@@ -21,10 +20,10 @@
             <div class="clearfix sitenav">
                 <div class="clearfix menu-main">
                     <ul id="menuSitenav" class="clearfix list-inline">
-                        <li class="first-item">
+                        <li class="first-item list-inline-item">
                         <a href="/" class="home"><span>首页</span></a>
                         </li>
-                        <li >
+                        <li class="list-inline-item">
                         <form class='form-inline'>
                             <div class='form-group'>
                                 <label for="question"></label>
@@ -33,26 +32,26 @@
                             <button type='submit' class='btn btn-primary'>search question</button>
                         </form>
                         </li>
-                        <li class='align-bottom'>
+                        <li class='align-bottom list-inline-item'>
                         <a class='btn btn-primary' href='/question/create' role='button'>ask new question</a>
                         </li>
-                        <li class='pull-right'>
+                        <li class='pull-right list-inline-item'>
                     <ul id='user-inter' class='right list-inline block-inline'>
                         @if(Auth::check())
-                            <li class="">
+                            <li class=" list-inline-item">
                             <a href="/user/{{ Auth::id() }}" class="home"><span>{{ Auth::user()->username }}</span></a>
                             </li>
-                            <li class="">
+                            <li class=" list-inline-item">
                             <a href="/logout" class="home"><span>logout</span></a>
                             </li>
-                            <li class="">
+                            <li class=" list-inline-item">
                             <a href="/changepassword" class="home"><span>change password</span></a>
                             </li>
                         @else
-                            <li class="">
+                            <li class=" list-inline-item">
                             <a href="/login" class="home"><span>login</span></a>
                             </li>
-                            <li class="">
+                            <li class=" list-inline-item">
                             <a href="/register" class="home"><span>register</span></a>
                             </li>
                         @endif

@@ -5,10 +5,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 @endsection
 @section('main')
-    <p class='pull-right'>{{ $question->watches()->count() }} peoples is watching</p>
+    <p class='float-right'>{{ $question->watches()->count() }} peoples is watching</p>
     @parent
     @if(Auth::check())
-        <a class='btn btn-primary pull-left' href='/question/{{ $question->id }}/answer'>answer</a>
+        <a class='btn btn-primary float-left' href='/question/{{ $question->id }}/answer'>answer</a>
         <form class="form-inline" method="post" action="/question/{{ $question->id }}/watch">
             @csrf
             @if($question->haswatch(Auth::id()))

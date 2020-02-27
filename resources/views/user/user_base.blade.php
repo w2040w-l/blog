@@ -2,6 +2,7 @@
 @section('title', 'activities of '.$user->username)
 @section('appheader', "")
 @section('main')
+
     <h3>{{ $user->username }}</h3>
     @if($user->status == -1)
         <div class='alert'>
@@ -11,13 +12,14 @@
     <div class='row'>
         <div class="col-md-offset-2 col-md-8">{{ $user->intro }}</div>
         </br>
-        <ul class='list-inline pull-right'>
-            <li class=''>{{ $user->approves()->count() }} approves</li>
-            <li class=''><a class='btn btn-default' href="/user/{{ $user->id }}/followers">{{ $user->followed()->count() }} followers</a></li>
-            <li class=''><a class='btn btn-default' href="/user/{{ $user->id }}/followings">{{ $user->follower()->count() }} following</a></li>
-            <li class=''><a class='btn btn-default' href="/user/{{ $user->id }}/watches">watching {{ $user->watches()->count() }} questions</a></li>
+        <ul class='list-inline float-right'>
+            <li class='list-inline-item'>{{ $user->approves()->count() }} approves</li>
+            <li class='list-inline-item'><a class='btn btn-default' href="/user/{{ $user->id }}/followers">{{ $user->followed()->count() }} followers</a></li>
+            <li class='list-inline-item'><a class='btn btn-default' href="/user/{{ $user->id }}/followings">{{ $user->follower()->count() }} following</a></li>
+            <li class='list-inline-item'><a class='btn btn-default' href="/user/{{ $user->id }}/watches">watching {{ $user->watches()->count() }} questions</a></li>
         </ul>
     </div>
+
     <div class='row'>
         @if($type == 'answers')
             <a class='btn btn-primary' href='/user/{{ $user->id }}/answers'>answers</a>
@@ -35,6 +37,7 @@
             <a class='btn btn-default' href='/user/{{ $user->id }}/activties'>activties</a>
         @endif
     </div>
+
     @if(Auth::check())
         <form class="form-inline" method="post" action="/user/{{ $user->id }}/follow">
             @csrf
