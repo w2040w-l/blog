@@ -1,4 +1,4 @@
-<div class='answer'>
+<div class='answer' id='answer-{{ $answer->id }}'>
     <div class='card '>
         <div class='card-header'>
             <a href="/question/{{ $answer->question_id }}/answer/{{ $answer->id }}">
@@ -24,15 +24,12 @@
                 <ul class='list-inline'>
                     @if(Auth::check())
                         <li class='list-inline-item'>
-                        <form class="" method="post" action="/answer/{{ $answer->id }}/approve">
-                            @csrf
-                            @if(\App\Model\User::find(Auth::id())->haveapp($answer->id))
-                                @method("delete")
-                                <button type='submit' class='btn btn-primary btn-sm' >{{ $answer->approves()->count() }} cancel upvote</button>
-                            @else
-                                <button type='submit' class='btn btn-default btn-sm btn-outline-info' >{{ $answer->approves()->count() }} upvote</button>
-                            @endif
-                        </form>
+                        <div>
+                            <appvote-button iansid='{{ $answer->id }}'
+                            iapproves={{ $answer->approves()->count() }}
+                            iappvote={{ \App\Model\User::find(Auth::id())->haveapp($answer->id)?0:1 }}
+                            ></appvote-button>
+                        </div>
                     @else
                         <button class='btn btn-default btn-sm' >{{ $answer->approves()->count() }}</br>upvote</button>
                     @endif
@@ -85,3 +82,4 @@
         </div>
     </div>
 </div>
+

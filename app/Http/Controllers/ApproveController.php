@@ -22,6 +22,7 @@ class ApproveController extends Controller{
     public function delete($aid){
         $qid = Answer::find($aid)->question->id;
         $app = Approve::where(['answer_id'=> $aid, 'user_id' => Auth::id()])->delete();
+        return 1;
         return redirect('/question/'.$qid);
     }
 }

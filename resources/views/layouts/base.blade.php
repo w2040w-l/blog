@@ -4,13 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="/static/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
-<script src="/js/app.js"></script>
 <title>@yield('title')</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @yield('appheader')
 </head>
-<body >
+
+<body>
 <!--顶部-->
-<div id="all" class='container'>
+<div id="app" class='container'>
     <div id="doc">
         <div id="hd">
             <div class="clearfix pagetitle">
@@ -36,28 +37,28 @@
                         <a class='btn btn-primary' href='/question/create' role='button'>ask new question</a>
                         </li>
                         <li class='pull-right list-inline-item'>
-                    <ul id='user-inter' class='right list-inline block-inline'>
-                        @if(Auth::check())
-                            <li class=" list-inline-item">
-                            <a href="/user/{{ Auth::id() }}" class="home"><span>{{ Auth::user()->username }}</span></a>
-                            </li>
-                            <li class=" list-inline-item">
-                            <a href="/logout" class="home"><span>logout</span></a>
-                            </li>
-                            <li class=" list-inline-item">
-                            <a href="/changepassword" class="home"><span>change password</span></a>
-                            </li>
-                        @else
-                            <li class=" list-inline-item">
-                            <a href="/login" class="home"><span>login</span></a>
-                            </li>
-                            <li class=" list-inline-item">
-                            <a href="/register" class="home"><span>register</span></a>
-                            </li>
-                        @endif
+                        <ul id='user-inter' class='right list-inline block-inline'>
+                            @if(Auth::check())
+                                <li class=" list-inline-item">
+                                <a href="/user/{{ Auth::id() }}" class="home"><span>{{ Auth::user()->username }}</span></a>
+                                </li>
+                                <li class=" list-inline-item">
+                                <a href="/logout" class="home"><span>logout</span></a>
+                                </li>
+                                <li class=" list-inline-item">
+                                <a href="/changepassword" class="home"><span>change password</span></a>
+                                </li>
+                            @else
+                                <li class=" list-inline-item">
+                                <a href="/login" class="home"><span>login</span></a>
+                                </li>
+                                <li class=" list-inline-item">
+                                <a href="/register" class="home"><span>register</span></a>
+                                </li>
+                            @endif
+                        </ul>
+                        </li>
                     </ul>
-                    </li>
-                </ul>
                 </div>
             </div>
         </div>
@@ -82,4 +83,6 @@
         </div>
     </div>
 </div>
+<script src="/js/app.js"></script>
+</body>
 </html>
