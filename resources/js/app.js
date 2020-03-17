@@ -22,6 +22,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('appvote-button', require('./components/AppvoteButton.vue').default);
+Vue.component('watch-button', require('./components/WatchButton.vue').default);
+Vue.component('watch-show', require('./components/WatchShow.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -26,7 +26,7 @@ class WatchController extends Controller{
     }
     public function delete($qid){
         $watch = Watch::where(['question_id'=> $qid, 'user_id' => Auth::id()])->delete();
-        return redirect()->back();
+        return 1;
     }
 }
 ?>
