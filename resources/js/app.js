@@ -24,6 +24,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('appvote-button', require('./components/AppvoteButton.vue').default);
 Vue.component('watch-button', require('./components/WatchButton.vue').default);
 Vue.component('watch-show', require('./components/WatchShow.vue').default);
+Vue.component('follow-button', require('./components/FollowButton.vue').default);
+Vue.component('follow-show', require('./components/FollowShow.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

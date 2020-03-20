@@ -29,7 +29,7 @@ class FollowController extends Controller{
     }
     public function delete($uid){
         Follow::where(['followed_id'=> $uid, 'follower_id' => Auth::id()])->delete();
-        return redirect()->back();
+        return 1;
     }
 }
 ?>

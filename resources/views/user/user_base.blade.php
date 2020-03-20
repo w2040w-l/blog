@@ -14,7 +14,7 @@
         </br>
         <ul class='list-inline float-right'>
             <li class='list-inline-item'>{{ $user->approves()->count() }} approves</li>
-            <li class='list-inline-item'><a class='btn btn-default' href="/user/{{ $user->id }}/followers">{{ $user->followed()->count() }} followers</a></li>
+            <follow-show ref='followShow' ifollow={{ $user->followed()->count() }} iuid={{ $user->id }}></follow-show>
             <li class='list-inline-item'><a class='btn btn-default' href="/user/{{ $user->id }}/followings">{{ $user->follower()->count() }} following</a></li>
             <li class='list-inline-item'><a class='btn btn-default' href="/user/{{ $user->id }}/watches">watching {{ $user->watches()->count() }} questions</a></li>
         </ul>
@@ -39,15 +39,7 @@
     </div>
 
     @if(Auth::check())
-        <form class="form-inline" method="post" action="/user/{{ $user->id }}/follow">
-            @csrf
-            @if($user->hasFollowed(Auth::id()))
-                @method("delete")
-                <button type='submit' class='btn btn-primary btn' >unfollow</button>
-            @else
-                <button type='submit' class='btn btn-default btn' >follow</button>
-            @endif
-        </form>
+        <follow-button ifollow={{ $user->followed()->count() }} iuid={{ $user->id }} ihave={{ $user->hasFollowed(Auth::id())?1:0 }}></follow-button>
         @if(Auth::user()->isroot == 1)
             <a href="/user/{{ $user->id }}/ban"class='btn btn-danger btn-inline' >ban</a>
         @endif
