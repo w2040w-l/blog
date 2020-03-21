@@ -26,6 +26,7 @@ Vue.component('watch-button', require('./components/WatchButton.vue').default);
 Vue.component('watch-show', require('./components/WatchShow.vue').default);
 Vue.component('follow-button', require('./components/FollowButton.vue').default);
 Vue.component('follow-show', require('./components/FollowShow.vue').default);
+Vue.component('popup', require('./components/Popup.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

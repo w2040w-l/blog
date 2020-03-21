@@ -1,3 +1,14 @@
-.row {
+.popup {
     margin: 0px;
+    background-color: rgba(0,0,0,.8);
+    z-index: 999;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.inpop {
+    margin: 0 auto;
+    background-color: rgba(255,255,255);
 }
