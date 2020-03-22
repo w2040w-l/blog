@@ -15,7 +15,7 @@
         <ul class='list-inline float-right'>
             <li class='list-inline-item'>{{ $user->approves()->count() }} approves</li>
             <follow-show ref='followShow' ifollow={{ $user->followed()->count() }} iuid={{ $user->id }}></follow-show>
-            <li class='list-inline-item'><a class='btn btn-default' href="/user/{{ $user->id }}/followings">{{ $user->follower()->count() }} following</a></li>
+            <following-show ref='followingShow' ifollow={{ $user->follower()->count() }} iuid={{ $user->id }}></following-show>
             <li class='list-inline-item'><a class='btn btn-default' href="/user/{{ $user->id }}/watches">watching {{ $user->watches()->count() }} questions</a></li>
         </ul>
     </div>

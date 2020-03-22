@@ -31,6 +31,7 @@ export default{
           this.have = 0;
           this.follows--;
           this.$parent.$refs.followShow.follows = this.follows;
+          this.$parent.$refs.followShow.update();
         }
         );
     },
@@ -42,6 +43,7 @@ export default{
           this.have = 1;
           this.follows++;
           this.$parent.$refs.followShow.follows = this.follows;
+          this.$parent.$refs.followShow.update();
         }
         );
     }

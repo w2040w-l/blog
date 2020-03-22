@@ -1,5 +1,5 @@
 <template>
-  <li class='list-inline-item'><a class='btn btn-default' v-on:click='showPop' >{{ follows }} followers</a>
+  <li class='list-inline-item'><a class='btn btn-default' v-on:click='showPop' >{{ follows }} followings</a>
     <popup iwidth='500' ref='followPop'>
       <ul class='list-unstyled'>
 
@@ -7,8 +7,8 @@
           <div class='answer'>
             <div class='card '>
               <div class=' card-body'>
-                <a v-bind:href="'/user/' + follower.follower.id ">
-                  {{ follower.follower.username }}
+                <a v-bind:href="'/user/' + follower.followed.id ">
+                  {{ follower.followed.username }}
                 </a>
               </div>
             </div>
@@ -41,7 +41,7 @@ export default{
     },
     update:function () {
       axios
-        .get('/user/'+this.iuid+'/followers')
+        .get('/user/'+this.iuid+'/followings')
         .then((response)=> {
           this.followers = response.data;
         }

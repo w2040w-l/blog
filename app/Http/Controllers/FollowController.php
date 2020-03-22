@@ -10,12 +10,14 @@ class FollowController extends Controller{
     public function showFollowers($uid){
         $user = User::find($uid);
         $follows = Follow::where(['followed_id' => $uid])->get();
-        return view("user.follower", ['follows' => $follows, 'user' => $user, 'type' => 'other']);
+        return $follows->load('follower')->toJson();
+        //return view("user.follower", ['follows' => $follows, 'user' => $user, 'type' => 'other']);
     }
     public function showFollowings($uid){
         $user = User::find($uid);
         $follows = Follow::where(['follower_id' => $uid])->get();
-        return view("user.followed", ['follows' => $follows, 'user' => $user, 'type' => 'other']);
+        return $follows->load('followed')->toJson();
+        //return view("user.followed", ['follows' => $follows, 'user' => $user, 'type' => 'other']);
     }
     public function store(Request $request, $uid){
         $follow = new Follow;
