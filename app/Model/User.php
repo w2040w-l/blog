@@ -8,6 +8,7 @@ class User extends Model
 {
     //
     const UPDATED_AT = null;
+    protected $hidden = ['password','remember_token'];
     public function records(){
         return $this->hasMany('App\Model\Qrecord');
     }
