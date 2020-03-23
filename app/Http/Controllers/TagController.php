@@ -14,6 +14,10 @@ class TagController extends Controller{
         $tags = Tag::all();
         return view('tag.index', ["tags"=> $tags]);
     }
+    public function getAll(){
+        $tags = Tag::all();
+        return $tags->toJson();
+    }
     public function create(){
         return view('tag.create');
     }

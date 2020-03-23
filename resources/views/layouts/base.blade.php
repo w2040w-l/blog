@@ -33,9 +33,9 @@
                             <button type='submit' class='btn btn-primary'>search question</button>
                         </form>
                         </li>
-                        <li class='align-bottom list-inline-item'>
-                        <a class='btn btn-primary' href='/question/create' role='button'>ask new question</a>
-                        </li>
+                        @if(Auth::check())
+                            <add-question></add-question>
+                        @endif
                         <li class='pull-right list-inline-item'>
                         <ul id='user-inter' class='right list-inline block-inline'>
                             @if(Auth::check())

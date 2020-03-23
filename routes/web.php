@@ -15,8 +15,10 @@ Route::redirect("/index", "/index/now");
 Route::get("/index/top", "HomeController@tindex");
 Route::get("/index/now", "HomeController@index");
 Route::get("/index/following", "HomeController@windex");
-Route::resource('question', 'QuestionController')->except(['index']);
+Route::resource('question', 'QuestionController')->except(['index', 'create']);
+Route::get('/tag/get', 'TagController@getAll');
 Route::resource('tag', 'TagController');
+Route::get('/question/{pid}/tag', 'QuestionTagController@index');
 
 Route::get('/question/{qid}/answer/{aid}', 'AnswerController@show');
 Route::middleware('auth')->group(function(){

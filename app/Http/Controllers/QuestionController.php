@@ -5,13 +5,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Model\Question;
 use App\Model\Qrecord;
+use App\Model\Question_tag;
 
 class QuestionController extends Controller{
     public function __construct(){
         $this->middleware('auth', ['except'=>['show']]);
-    }
-    public function create(){
-        return view('question.create');
     }
     public function edit($id){
         $question = Question::find($id);
@@ -26,7 +24,7 @@ class QuestionController extends Controller{
         $record = Qrecord::find($question->qrecord_id);
         $nrecord = new Qrecord();
         $nrecord->title = $request->title;
-        $nrecord->content= $request->content;
+        $nrecord->content= $request->desc;
         $nrecord->user_id = Auth::id();
         $nrecord->previous_qrecord = $record->id;
         $nrecord->question_id = $question->id;
@@ -35,11 +33,18 @@ class QuestionController extends Controller{
         $question->save();
         return redirect('/question/'.$question->id);
     }
+    public function saveTag($qid, $tid){
+        $questiontag = new Question_tag;
+        $questiontag->question_id = $qid;
+        $questiontag->tag_id = $tid;
+        $questiontag->save();
+        return 0;
+    }
     public function store(Request $request){
         $question = new Question;
         $record = new Qrecord;
         $record->title = $request->title;
-        $record->content= $request->content;
+        $record->content= $request->desc;
         $record->user_id = Auth::id();
         $question->user_id = Auth::id();
         $question->status = 1;
@@ -48,7 +53,11 @@ class QuestionController extends Controller{
         $question->save();
         $record->question_id = $question->id;
         $record->save();
-        return redirect('/question/'.$question->id);
+        $tags = $request->tags;
+        foreach($tags as $tag){
+            $this->saveTag($question->id, $tag['id'] );
+        }
+        return '/question/'.$question->id;
     }
     public function show($id){
         $question = Question::find($id);
