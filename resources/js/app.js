@@ -29,6 +29,7 @@ Vue.component('popup', require('./components/Popup.vue').default);
 Vue.component('follow-show', require('./components/FollowShow.vue').default);
 Vue.component('following-show', require('./components/FollowingShow.vue').default);
 Vue.component('add-question', require('./components/AddQuestion.vue').default);
+Vue.component('edit-question', require('./components/EditQuestion.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

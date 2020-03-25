@@ -18,7 +18,6 @@ Route::get("/index/following", "HomeController@windex");
 Route::resource('question', 'QuestionController')->except(['index', 'create']);
 Route::get('/tag/get', 'TagController@getAll');
 Route::resource('tag', 'TagController');
-Route::get('/question/{pid}/tag', 'QuestionTagController@index');
 
 Route::get('/question/{qid}/answer/{aid}', 'AnswerController@show');
 Route::middleware('auth')->group(function(){
@@ -37,9 +36,7 @@ Route::middleware('auth')->group(function(){
     Route::delete('/question/{pid}/watch', 'WatchController@delete');
     Route::post('/question/{pid}/watch', 'WatchController@store');
 
-    Route::get('/question/{pid}/tag', 'QuestionTagController@index');
-    Route::post('/question/{pid}/tag/{tid}', 'QuestionTagController@store');
-    Route::delete('/question/{pid}/tag/{tid}', 'QuestionTagController@delete');
+    Route::get('/question/{pid}/tag', 'QuestionTagController@query');
 
     Route::delete('/user/{uid}/follow', 'FollowController@delete');
     Route::post('/user/{uid}/follow', 'FollowController@store');

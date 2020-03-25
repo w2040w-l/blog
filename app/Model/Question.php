@@ -26,6 +26,9 @@ class Question extends Model
     public function question_tags(){
         return $this->hasMany('App\Model\Question_tag');
     }
+    public function tags(){
+        return $this->hasManyThrough('App\Model\Tag', 'App\Model\Question_tag', 'question_id','id', 'id', 'tag_id');
+    }
     public function haswatch($uid){
         if($this->watches()->where(['user_id' => $uid])->count() == 0){
             return false;

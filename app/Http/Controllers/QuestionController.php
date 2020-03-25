@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Model\Question;
 use App\Model\Qrecord;
 use App\Model\Question_tag;
+use App\Model\Tag;
 
 class QuestionController extends Controller{
     public function __construct(){
@@ -28,10 +29,22 @@ class QuestionController extends Controller{
         $nrecord->user_id = Auth::id();
         $nrecord->previous_qrecord = $record->id;
         $nrecord->question_id = $question->id;
-        $nrecord->save();
-        $question->qrecord_id = $nrecord->id;
-        $question->save();
-        return redirect('/question/'.$question->id);
+        if($record->title == $nrecord->title && $record->content == $nrecord->content){
+            ;
+        } else {
+            $nrecord->save();
+            $question->qrecord_id = $nrecord->id;
+            $question->save();
+        }
+        $ntags = Tag::hydrate($request->tags);
+        $tags = $question->tags;
+        foreach($ntags->diff($tags) as $tag){
+            $this->saveTag($question->id, $tag->id );
+        }
+        foreach($tags->diff($ntags) as $tag){
+            Question_tag::where(['tag_id' => $tag->id, 'question_id' => $question->id])->delete();
+        }
+        return 0;
     }
     public function saveTag($qid, $tid){
         $questiontag = new Question_tag;

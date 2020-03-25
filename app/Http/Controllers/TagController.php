@@ -15,7 +15,7 @@ class TagController extends Controller{
         return view('tag.index', ["tags"=> $tags]);
     }
     public function getAll(){
-        $tags = Tag::all();
+        $tags = Tag::orderBy('id','asc')->get();
         return $tags->toJson();
     }
     public function create(){
