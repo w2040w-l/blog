@@ -1,0 +1,50 @@
+<template>
+  <div>
+    <button class='btn btn-primary push-left' v-on:click='popCreate'>edit tag</button>
+    <popup ref='addTag' iwidth='600' >
+      <div class='form-group'>
+        <label for='title'>tag name</label>
+        <h4>{{ title }}</h4>
+      </div>
+      <div class='form-group'>
+        <label for='content'>tag intro</label>
+        <textarea class='form-control' id='content' name='content' v-model='content'>
+        </textarea>
+      </div>
+      <button type="submit" class='btn btn-primary' v-on:click='create'>submit tag</button>
+    </popup>
+  </div>
+</template>
+
+<script>
+export default{
+  props: ['ititle', 'icontent', 'itid'],
+  data: function (){
+    return {
+      show : 0,
+      title: null,
+      content: null
+    }
+  },
+  mounted(){
+    this.title = this.ititle;
+    this.content = this.icontent;
+  },
+
+  methods:{
+    create: function(){
+      axios
+        .put('/tag/'+this.itid,{
+          'content' : this.content
+        })
+        .then((response )=> {
+          location.reload();
+        }
+        );
+    },
+    popCreate:function () {
+      this.$refs.addTag.show = 1;
+    }
+  }
+}
+</script>

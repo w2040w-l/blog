@@ -17,7 +17,7 @@ Route::get("/index/now", "HomeController@index");
 Route::get("/index/following", "HomeController@windex");
 Route::resource('question', 'QuestionController')->except(['index', 'create']);
 Route::get('/tag/get', 'TagController@getAll');
-Route::resource('tag', 'TagController');
+Route::resource('tag', 'TagController')->except(['edit','create']);
 
 Route::get('/question/{qid}/answer/{aid}', 'AnswerController@show');
 Route::middleware('auth')->group(function(){

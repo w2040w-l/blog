@@ -11,5 +11,5 @@
             </div>
         @endforeach
     </div>
-    <a class='btn btn-primary' href='/tag/create'>make a new tag</a>
+    <add-tag></add-tag>
 @endsection

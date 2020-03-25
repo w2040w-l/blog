@@ -18,14 +18,6 @@ class TagController extends Controller{
         $tags = Tag::orderBy('id','asc')->get();
         return $tags->toJson();
     }
-    public function create(){
-        return view('tag.create');
-    }
-    public function edit($id){
-        $tag = Tag::find($id);
-        $record = Trecord::find($tag->trecord_id);
-        return view('tag.edit', ['record' => $record,'tag'=> $tag]);
-    }
     public function update(Request $request, $id){
         $tag = Tag::find($id);
         $record = Trecord::find($tag->trecord_id);
@@ -34,10 +26,14 @@ class TagController extends Controller{
         $nrecord->user_id = Auth::id();
         $nrecord->previous_trecord = $record->id;
         $nrecord->tag_id = $tag->id;
-        $nrecord->save();
-        $tag->trecord_id = $nrecord->id;
-        $tag->save();
-        return redirect('/tag/'.$tag->id);
+        if($record->content == $nrecord->content && $record->title == $nrecord->title){
+            ;
+        } else {
+            $nrecord->save();
+            $tag->trecord_id = $nrecord->id;
+            $tag->save();
+        }
+        return 1;
     }
     public function store(Request $request){
         $tag = new Tag;
@@ -51,7 +47,7 @@ class TagController extends Controller{
         $tag->save();
         $record->tag_id = $tag->id;
         $record->save();
-        return redirect('/tag/'.$tag->id);
+        return '/tag/'.$tag->id;
     }
     public function show($id){
         $tag = Tag::find($id);
