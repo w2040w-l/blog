@@ -21,7 +21,6 @@ Route::resource('tag', 'TagController')->except(['edit','create']);
 
 Route::get('/question/{qid}/answer/{aid}', 'AnswerController@show');
 Route::middleware('auth')->group(function(){
-    Route::get('/question/{qid}/answer/', 'AnswerController@create');
     Route::get('/question/{qid}/answer/{aid}/edit', 'AnswerController@edit');
     Route::post('/question/{qid}/answer/', 'AnswerController@store');
     Route::put('/question/{qid}/answer/{aid}', 'AnswerController@update');

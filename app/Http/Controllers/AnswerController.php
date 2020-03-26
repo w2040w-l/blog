@@ -8,11 +8,6 @@ use App\Model\Qrecord;
 use App\Model\Answer;
 
 class AnswerController extends Controller{
-    public function create($qid){
-        $question = Question::find($qid);
-        $record = Qrecord::find($question->qrecord_id);
-        return view('answer.create', ['question' => $question, 'record' => $record]);
-    }
     public function edit($pid, $aid){
         $answer = Answer::find($aid);
         $question = $answer->question;
@@ -37,7 +32,7 @@ class AnswerController extends Controller{
         $answer->question_id = $qid;
         $answer->user_id = Auth::id();
         $answer->save();
-        return redirect('/question/'.$qid.'/answer/'.$answer->id);
+        return '/question/'.$qid.'/answer/'.$answer->id;
     }
     public function delete($qid, $aid){
         Answer::destroy($aid);

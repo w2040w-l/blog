@@ -36,4 +36,11 @@ class Question extends Model
             return true;
         }
     }
+    public function hasanswer($uid){
+        if($this->answers()->where(['user_id' => $uid])->count() == 0){
+            return false;
+        } else {
+            return $this->answers()->where(['user_id' =>$uid])->first()->id;
+        }
+    }
 }
