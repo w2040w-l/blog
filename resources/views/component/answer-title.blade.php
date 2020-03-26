@@ -12,14 +12,20 @@
 
         <div class='card-body'>
             <a href='/user/{{ $answer->user->id }}'>{{ $answer->user->username }}</a>
-            <div class='row'>
-                <div class='col-md-10 col-md-offset-1'>{!! nl2br($answer->content) !!}</div>
-            </div>
-            <div class='float-right align-bottom'>
-                <a  href='/question/{{ $answer->question_id }}/answer/{{ $answer->id }}'>
-                    updated_at {{ $answer->updated_at }}</a></div>
-
-            </br>
+            @if(Auth::id() == $answer->user->id)
+                <myanswer ref='myanswer{{ $answer->id }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' icontent='{!! nl2br($answer->content) !!}'
+                ircontent='{{ $answer->content }}'
+                iupdated='{{ $answer->updated_at }}'></myanswer>
+            @else
+                <div class='row'>
+                    <div class='col-md-10 col-md-offset-1'>{!! nl2br($answer->content) !!}</div>
+                </div>
+                <div class='float-right'>
+                    <a  href='/question/{{ $answer->question->id }}/answer/{{ $answer->id }}'>
+                        updated_at {{ $answer->updated_at }}</a>
+                </div>
+            @endif
+            <br/>
             <div class='align-bottom'>
                 <ul class='list-inline'>
                     @if(Auth::check())
@@ -39,7 +45,7 @@
                     </li>
                     @if(Auth::id() == $answer->user->id)
                         <li class='list-inline-item'>
-                        <a class='btn btn-sm btn-default ' href='/question/{{ $answer->question->id }}/answer/{{ $answer->id }}/edit'>edit</a>
+                        <edit-answer itid='{{ $answer->id }}'></edit-answer>
                         </li>
                         <li class='list-inline-item'>
                         <form class="form-inline " method="post" action="/question/{{ $answer->question->id }}/answer/{{ $answer->id }}">

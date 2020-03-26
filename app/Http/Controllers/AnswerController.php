@@ -24,7 +24,7 @@ class AnswerController extends Controller{
         $answer = Answer::find($aid);
         $answer->content = $request->content;
         $answer->save();
-        return redirect('/question/'.$qid.'/answer/'.$aid);
+        return ['content' => nl2br($answer->content), 'answer' => $answer];
     }
     public function store(Request $request, $qid){
         $answer = new Answer;

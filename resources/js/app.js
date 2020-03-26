@@ -35,6 +35,8 @@ Vue.component('edit-tag', require('./components/EditTag.vue').default);
 Vue.component('add-answer', require('./components/AddAnswer.vue').default);
 Vue.component('comments', require('./components/Comments.vue').default);
 Vue.component('comments-button', require('./components/CommentsButton.vue').default);
+Vue.component('myanswer', require('./components/MyAnswer.vue').default);
+Vue.component('edit-answer', require('./components/EditAnswer.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
