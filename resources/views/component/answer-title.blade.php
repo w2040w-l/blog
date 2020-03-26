@@ -35,7 +35,7 @@
                     @endif
                     </li>
                     <li class='list-inline-item'>
-                    <a class="btn btn-default btn-sm" data-toggle="collapse" href="#collapse{{ $answer->id }}" role="button" aria-expanded="false" aria-controls="collapse{{ $answer->id }}"> {{ $answer->comments()->count() }} comments</a>
+                    <comments-button ref='cbutton{{ $answer->id }}' icount='{{ $answer->comments()->count() }}' iaid='{{ $answer->id }}'></comments-button>
                     </li>
                     @if(Auth::id() == $answer->user->id)
                         <li class='list-inline-item'>
@@ -54,32 +54,6 @@
         </div>
     </div>
 
-    <div class='collapse card' id='collapse{{ $answer->id }}'>
-        <div class='card-body'>
-            @foreach( $answer->comments as $comment )
-                <div class='row'>
-                    <div class='col-md-10 col-md-offset-1'>
-                        <a href='/user/{{ $comment->user->id }}'>{{ $comment->user->username }}</a>:
-                        {{ $comment->content }}</div>
-                    @if(Auth::id() == $comment->user->id)
-                        <form class="form-inline float-right" method="post" action="/question/{{ $answer->question->id }}/answer/{{ $answer->id }}/comment/{{ $comment->id }}">
-                            @csrf
-                            @method("delete")
-                            <button type='submit' class='btn btn-danger btn-link' >delete</button>
-                        </form>
-                    @endif
-                </div>
-            @endforeach
-            <form action="/question/{{ $answer->question->id }}/answer/{{ $answer->id }}/comment" method="post">
-                @csrf
-                <div class='form-group'>
-                    <label for='content'>comment content</label>
-                    <textarea class='form-control' id='content' name='content' >
-                    </textarea>
-                </div>
-                <button type="submit" class='btn btn-primary'>submit comment</button>
-            </form>
-        </div>
-    </div>
+    <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' iusername='{{ Auth::user()->username }}'></comments>
 </div>
 

@@ -13,11 +13,14 @@ class CommentController extends Controller{
         $comment->answer_id = $aid;
         $comment->user_id = Auth::id();
         $comment->save();
-        return redirect()->back();
+        return $comment->load('user')->toJson();
     }
     public function delete($qid, $aid, $cid){
         Commentmy::destroy($cid);
-        return redirect()->back();
+        return 1;
+    }
+    public function getall($qid, $aid){
+        return Answer::find($aid)->comments->load('user')->toJson();
     }
 }
 ?>
