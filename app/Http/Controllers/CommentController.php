@@ -8,6 +8,7 @@ use App\Model\Commentmy;
 
 class CommentController extends Controller{
     public function store(Request $request, $qid, $aid){
+        $vaild = $request->validate(['content' => 'required']);
         $comment = new Commentmy;
         $comment->content= $request->content;
         $comment->answer_id = $aid;

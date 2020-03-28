@@ -48,9 +48,12 @@ export default{
           this.content = response.data.content;
           this.updated_at = response.data.answer.updated_at;
           this.cancel();
-        }
-        );
-    },
+        })
+        .catch((error, response) => {
+          this.$root.$refs.error.tip(error.response.data.errors);
+        })
+          ;
+        },
     ashow:function () {
       this.show = 1;
     },

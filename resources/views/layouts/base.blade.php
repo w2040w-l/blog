@@ -64,6 +64,7 @@
         </div>
     </div>
 
+    <error ref='error'></error>
 
     <!--中间区块-->
     <div class="container">

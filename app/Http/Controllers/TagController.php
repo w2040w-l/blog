@@ -19,6 +19,7 @@ class TagController extends Controller{
         return $tags->toJson();
     }
     public function update(Request $request, $id){
+        $vaild = $request->validate(['content' => 'required']);
         $tag = Tag::find($id);
         $record = Trecord::find($tag->trecord_id);
         $nrecord = new Trecord();
@@ -36,6 +37,7 @@ class TagController extends Controller{
         return 1;
     }
     public function store(Request $request){
+        $vaild = $request->validate(['title' => 'required']);
         $tag = new Tag;
         $record = new Trecord;
         $tag->title = $request->title;

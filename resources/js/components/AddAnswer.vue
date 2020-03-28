@@ -39,8 +39,11 @@ export default{
         })
         .then((response )=> {
           location.href =response.data;
-        }
-        );
+        })
+        .catch((error, response) => {
+          this.$root.$refs.error.tip(error.response.data.errors);
+        })
+        ;
     },
     ashow:function () {
       this.show = 1;

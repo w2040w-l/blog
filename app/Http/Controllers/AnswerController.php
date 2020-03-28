@@ -8,12 +8,6 @@ use App\Model\Qrecord;
 use App\Model\Answer;
 
 class AnswerController extends Controller{
-    public function edit($pid, $aid){
-        $answer = Answer::find($aid);
-        $question = $answer->question;
-        $record = Qrecord::find($question->qrecord_id);
-        return view('answer.edit', ['record' => $record,'question'=> $question, 'answer' => $answer]);
-    }
     public function show($pid, $aid){
         $answer = Answer::find($aid);
         $question = $answer->question;
@@ -21,12 +15,16 @@ class AnswerController extends Controller{
         return view('answer.show', ['record' => $record,'question'=> $question, 'answer' => $answer]);
     }
     public function update(Request $request,$qid, $aid){
+        $vaild = $request->validate(['content' => 'required']);
         $answer = Answer::find($aid);
-        $answer->content = $request->content;
-        $answer->save();
+        if($answer->content != $request->content){
+            $answer->content = $request->content;
+            $answer->save();
+        }
         return ['content' => nl2br($answer->content), 'answer' => $answer];
     }
     public function store(Request $request, $qid){
+        $vaild = $request->validate(['content' => 'required']);
         $answer = new Answer;
         $answer->content= $request->content;
         $answer->question_id = $qid;

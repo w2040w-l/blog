@@ -39,8 +39,11 @@ export default{
         })
         .then((response )=> {
           location.reload();
-        }
-        );
+        })
+        .catch((error, response) => {
+          this.$root.$refs.error.tip(error.response.data.errors);
+        })
+      ;
     },
     popCreate:function () {
       this.$refs.addTag.show = 1;

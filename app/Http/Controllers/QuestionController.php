@@ -12,6 +12,7 @@ class QuestionController extends Controller{
     public function __construct(){
         $this->middleware('auth', ['except'=>['show']]);
     }
+    /*
     public function edit($id){
         $question = Question::find($id);
         if($question->status == -1){
@@ -20,7 +21,9 @@ class QuestionController extends Controller{
         $record = Qrecord::find($question->qrecord_id);
         return view('question.edit', ['record' => $record,'question'=> $question]);
     }
+     */
     public function update(Request $request, $id){
+        $vaild = $request->validate(['title' => 'required']);
         $question = Question::find($id);
         $record = Qrecord::find($question->qrecord_id);
         $nrecord = new Qrecord();
@@ -54,6 +57,7 @@ class QuestionController extends Controller{
         return 0;
     }
     public function store(Request $request){
+        $vaild = $request->validate(['title' => 'required']);
         $question = new Question;
         $record = new Qrecord;
         $record->title = $request->title;

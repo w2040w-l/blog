@@ -42,8 +42,11 @@ export default{
           this.content = null;
           this.comments.push(response.data);
           this.$parent.$refs['cbutton'+this.iaid].count++;
-        }
-        );
+        })
+        .catch((error, response) => {
+          this.$root.$refs.error.tip(error.response.data.errors);
+        })
+      ;
     },
     removeComment: function(index, cid){
       axios

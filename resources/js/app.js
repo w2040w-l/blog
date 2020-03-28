@@ -37,6 +37,7 @@ Vue.component('comments', require('./components/Comments.vue').default);
 Vue.component('comments-button', require('./components/CommentsButton.vue').default);
 Vue.component('myanswer', require('./components/MyAnswer.vue').default);
 Vue.component('edit-answer', require('./components/EditAnswer.vue').default);
+Vue.component('error', require('./components/Error.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
