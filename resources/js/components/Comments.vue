@@ -8,7 +8,7 @@
         </div>
         <button v-if='iuid == comment.user.id' v-on:click='removeComment(index, comment.id)'class='btn-sm btn-danger btn-link' >delete</button>
       </div>
-      <div class='form-group'>
+      <div v-if='iuid' class='form-group'>
         <label for='content'>comment content</label>
         <textarea class='form-control' id='content' name='content' v-model='content'>
         </textarea>

@@ -38748,43 +38748,45 @@ var render = function() {
               ])
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "content" } }, [
-                _vm._v("comment content")
-              ]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.content,
-                    expression: "content"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { id: "content", name: "content" },
-                domProps: { value: _vm.content },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _vm.iuid
+              ? _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "content" } }, [
+                    _vm._v("comment content")
+                  ]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.content,
+                        expression: "content"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "content", name: "content" },
+                    domProps: { value: _vm.content },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.content = $event.target.value
+                      }
                     }
-                    _vm.content = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "submit" },
-                  on: { click: _vm.create }
-                },
-                [_vm._v("submit comment")]
-              )
-            ])
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "submit" },
+                      on: { click: _vm.create }
+                    },
+                    [_vm._v("submit comment")]
+                  )
+                ])
+              : _vm._e()
           ],
           2
         )

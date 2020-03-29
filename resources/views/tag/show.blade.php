@@ -5,7 +5,9 @@
     <h3>{{ $tag->title }}</h3>
     <div class='row'>
         <div class="col-md-offset-2 col-md-8">{{ $tag->nowrecord->content }}</div>
-        <edit-tag ititle='{{ $tag->title }}' icontent='{{ $tag->nowrecord->content }}' itid='{{ $tag->id }}'></edit-tag>
+        @if(Auth::check())
+            <edit-tag ititle='{{ $tag->title }}' icontent='{{ $tag->nowrecord->content }}' itid='{{ $tag->id }}'></edit-tag>
+        @endif
         </br>
     </div>
 

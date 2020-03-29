@@ -60,6 +60,10 @@
         </div>
     </div>
 
-    <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' iusername='{{ Auth::user()->username }}'></comments>
+    @if(Auth::check())
+        <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' iusername='{{ Auth::user()->username }}'></comments>
+    @else
+        <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' iusername=''></comments>
+    @endif
 </div>
 

@@ -11,5 +11,7 @@
             </div>
         @endforeach
     </div>
-    <add-tag></add-tag>
+    @if(Auth::check())
+        <add-tag></add-tag>
+    @endif
 @endsection

@@ -18,6 +18,7 @@ Route::get("/index/following", "HomeController@windex");
 Route::resource('question', 'QuestionController')->except(['index', 'create']);
 Route::get('/tag/get', 'TagController@getAll');
 Route::resource('tag', 'TagController')->except(['edit','create']);
+Route::get('/question/{qid}/answer/{aid}/comment', 'CommentController@getall');
 
 Route::get('/question/{qid}/answer/{aid}', 'AnswerController@show');
 Route::middleware('auth')->group(function(){
@@ -26,7 +27,6 @@ Route::middleware('auth')->group(function(){
     Route::put('/question/{qid}/answer/{aid}', 'AnswerController@update');
     Route::delete('/question/{qid}/answer/{aid}', 'AnswerController@delete');
 
-    Route::get('/question/{qid}/answer/{aid}/comment', 'CommentController@getall');
     Route::post('/question/{qid}/answer/{aid}/comment', 'CommentController@store');
     Route::delete('/question/{qid}/answer/{aid}/comment/{cid}', 'CommentController@delete');
 

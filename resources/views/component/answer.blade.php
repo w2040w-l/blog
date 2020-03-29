@@ -6,7 +6,7 @@
             @if(Auth::id() == $answer->user->id)
                 <myanswer ref='myanswer{{ $answer->id }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' icontent='{!! nl2br($answer->content) !!}'
                 ircontent='{{ $answer->content }}'
-                 iupdated='{{ $answer->updated_at }}'></myanswer>
+                iupdated='{{ $answer->updated_at }}'></myanswer>
             @else
                 <div class='row'>
                     <div class='col-md-10 col-md-offset-1'>{!! nl2br($answer->content) !!}</div>
@@ -21,10 +21,14 @@
             <div class='align-bottom'>
                 <ul class='list-inline'>
                     <li class='list-inline-item'>
-                    <appvote-button iansid='{{ $answer->id }}'
-                    iapproves={{ $answer->approves()->count() }}
-                    iappvote={{ \App\Model\User::find(Auth::id())->haveapp($answer->id)?0:1 }}
-                    ></appvote-button>
+                    @if(Auth::check())
+                        <appvote-button iansid='{{ $answer->id }}'
+                        iapproves={{ $answer->approves()->count() }}
+                        iappvote={{ \App\Model\User::find(Auth::id())->haveapp($answer->id)?0:1 }}
+                        ></appvote-button>
+                    @else
+                        <button class='btn btn-default btn-sm' >{{ $answer->approves()->count() }}</br>upvote</button>
+                    @endif
                     </li>
                     <li class='list-inline-item'>
                     <comments-button ref='cbutton{{ $answer->id }}' icount='{{ $answer->comments()->count() }}' iaid='{{ $answer->id }}'></comments-button>
@@ -46,5 +50,9 @@
         </div>
     </div>
 
-    <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' iusername='{{ Auth::user()->username }}'></comments>
+    @if(Auth::check())
+        <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' iusername='{{ Auth::user()->username }}'></comments>
+    @else
+        <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' iusername=''></comments>
+    @endif
 </div>
