@@ -7,12 +7,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Model\User;
 
 class LoginController extends Controller{
-    public function index(){
-        return view("auth.login");
-    }
-    public function changeindex(){
-        return view("auth.changepassword");
-    }
     public function changepassword(Request $request){
         $request->validate(['password' => 'required',
         'newpassword' => 'required']);
@@ -22,10 +16,9 @@ class LoginController extends Controller{
             $user->password = Hash::make($request->newpassword);
             $user->save();
             $this->logout();
-            return redirect('/login');
-            //return redirect()->intended('/');
+            return 1;
         } else {
-            return redirect('/login')->withErrors(["user don't match with password"]);
+            return response(['errors' => ['login' => ["user don't match password"]]], 424);
         }
     }
     public function login(Request $request){
@@ -35,7 +28,7 @@ class LoginController extends Controller{
         if(Auth::attempt($user, true)){
             return redirect()->intended('/');
         } else {
-            return redirect('/login')->withErrors(["user don't match with password"]);
+            return response(['errors' => ['login' => ["user don't match password"]]], 424);
         }
     }
     public function logout(){

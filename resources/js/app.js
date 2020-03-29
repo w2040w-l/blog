@@ -38,6 +38,9 @@ Vue.component('comments-button', require('./components/CommentsButton.vue').defa
 Vue.component('myanswer', require('./components/MyAnswer.vue').default);
 Vue.component('edit-answer', require('./components/EditAnswer.vue').default);
 Vue.component('error', require('./components/Error.vue').default);
+Vue.component('register', require('./components/Register.vue').default);
+Vue.component('login', require('./components/Login.vue').default);
+Vue.component('change-password', require('./components/ChangePassword.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -43,18 +43,12 @@
                                 <a href="/user/{{ Auth::id() }}" class="home"><span>{{ Auth::user()->username }}</span></a>
                                 </li>
                                 <li class=" list-inline-item">
-                                <a href="/logout" class="home"><span>logout</span></a>
+                                <a href="/logout" class="btn-link"><span>logout</span></a>
                                 </li>
-                                <li class=" list-inline-item">
-                                <a href="/changepassword" class="home"><span>change password</span></a>
-                                </li>
+                                <change-password></change-password>
                             @else
-                                <li class=" list-inline-item">
-                                <a href="/login" class="home"><span>login</span></a>
-                                </li>
-                                <li class=" list-inline-item">
-                                <a href="/register" class="home"><span>register</span></a>
-                                </li>
+                                <login ref='loginbutton'></login>
+                                <register></register>
                             @endif
                         </ul>
                         </li>

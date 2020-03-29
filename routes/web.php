@@ -19,10 +19,9 @@ Route::resource('question', 'QuestionController')->except(['index', 'create']);
 Route::get('/tag/get', 'TagController@getAll');
 Route::resource('tag', 'TagController')->except(['edit','create']);
 Route::get('/question/{qid}/answer/{aid}/comment', 'CommentController@getall');
-
 Route::get('/question/{qid}/answer/{aid}', 'AnswerController@show');
+
 Route::middleware('auth')->group(function(){
-    Route::get('/question/{qid}/answer/{aid}/edit', 'AnswerController@edit');
     Route::post('/question/{qid}/answer/', 'AnswerController@store');
     Route::put('/question/{qid}/answer/{aid}', 'AnswerController@update');
     Route::delete('/question/{qid}/answer/{aid}', 'AnswerController@delete');
@@ -51,39 +50,10 @@ Route::get('/user/{uid}',function($uid){
 Route::get('/user/{uid}/answers', 'UserController@showAnswers')->name('userAnswers');
 Route::get('/user/{uid}/questions', 'UserController@showQuestions');
 Route::get('/user/{uid}/watches', 'WatchController@show');
-Route::get('/user/{uid}/followings', 'FollowController@showFollowings');
-Route::get('/user/{uid}/followers', 'FollowController@showFollowers');
 Route::put('/user/{uid}/edit', 'UserController@update');
-
-Route::get('/login', 'LoginController@index')->name('login');
-Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::post('/login', 'LoginController@login');
 Route::post('/register', 'RegisterController@register');
 Route::get('/logout', 'LoginController@logout');
 Route::get('/changepassword', 'LoginController@changeindex');
 Route::post('/changepassword', 'LoginController@changepassword');
-/*
-Route::get('/', 'Home\IndexController@index');
-//访问后台首页
-Route::get('/admin', 'Admin\IndexController@index');
-//访问登录页面
-Route::get('/admin/login', 'Admin\LoginController@index');
-//登陆的提交动作
-//退出
-Route::get('/admin/logout', 'Admin\LoginController@logout');
-//欢迎界面
-Route::get('/admin/welcome', 'Admin\IndexController@welcome');
-//前台列表页
-Route::get('/list/{id}', 'Home\ListController@category');
-Route::get('/list/', 'Home\ListController@index');
-
-//前台文章详情页面
-Route::get('/details/{id}.html', 'Home\DetailsController@index');
-
-Route::get('/comments', 'Comments\CommentsController@index');
-Route::post('/comments/store', 'Comments\CommentsController@store');
- */
-
-
-
