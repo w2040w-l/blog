@@ -9,7 +9,7 @@
         </div>
         <div class='form-group'>
           <label for='content'>question content</label>
-          <textarea class='form-control' id='content' name='content' v-model='desc'></textarea>
+          <textarea class='form-control' id='content' name='content' v-model='desc' v-on:keyup="resize" v-bind:rows='row'></textarea>
         </div>
         <ul class='list-inline '>
           <li class='list-inline-item align-top' v-for='(tag, index) in tags'><a>{{ tag.title }}</a>
@@ -38,6 +38,7 @@ export default{
   data: function (){
     return {
       show : 0,
+      row: 3,
       toggle: 0,
       title: null,
       desc: null,
@@ -50,6 +51,9 @@ export default{
   },
 
   methods:{
+    resize: function(event){
+      this.row = (event.target.scrollHeight - event.target.scrollHeight%24) / 24 ;
+    },
     getAllTags: function(){
       axios
         .get('/tag/get')
@@ -58,6 +62,7 @@ export default{
         }
         );
     },
+
     create: function(){
       axios
         .post('/question',{
@@ -71,7 +76,7 @@ export default{
         .catch((error, response) => {
           this.$root.$refs.error.tip(error.response.data.errors);
         })
-        ;
+      ;
     },
     popCreate:function () {
       this.$refs.addQstn.show = 1;
