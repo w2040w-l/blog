@@ -22,7 +22,7 @@ Route::resource('tag', 'TagController')->except(['edit','create']);
 Route::get('/question/{qid}/answer/{aid}/comment', 'CommentController@getall');
 
 Route::get('/question/{qid}/answer/{aid}', 'AnswerController@show');
-Route::middleware('auth')->group(function(){
+Route::middleware(['bancheck', 'auth'])->group(function(){
     Route::post('/question/{qid}/answer/', 'AnswerController@store');
     Route::put('/question/{qid}/answer/{aid}', 'AnswerController@update');
     Route::delete('/question/{qid}/answer/{aid}', 'AnswerController@delete');
