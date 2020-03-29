@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use App\Model\Question;
 use App\Model\Qrecord;
@@ -12,16 +13,14 @@ class QuestionController extends Controller{
     public function __construct(){
         $this->middleware('auth', ['except'=>['show']]);
     }
-    /*
-    public function edit($id){
-        $question = Question::find($id);
-        if($question->status == -1){
-            return redirect()->back()->withErrors(["this question has been locked, can't edit"]);
-        }
-        $record = Qrecord::find($question->qrecord_id);
-        return view('question.edit', ['record' => $record,'question'=> $question]);
+    public function query(Request $request){
+        $keyword = $request->keyword;
+        $questions = Question::whereHas('records', function (Builder $query) use($keyword){
+            $query->where('title', 'like', '%'.$keyword.'%')
+                ->orWhere('content', 'like', '%'.$keyword.'%');
+        })->get();
+        return view('question.list', ['questions' => $questions, 'keyword' => $keyword]);
     }
-     */
     public function update(Request $request, $id){
         $vaild = $request->validate(['title' => 'required']);
         $question = Question::find($id);

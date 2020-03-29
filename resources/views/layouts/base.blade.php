@@ -25,10 +25,10 @@
                         <a href="/" class="home"><span>首页</span></a>
                         </li>
                         <li class="list-inline-item">
-                        <form class='form-inline'>
+                        <form class='form-inline' method='get' action='/search'>
                             <div class='form-group'>
-                                <label for="question"></label>
-                                <input type='text' class='form-control' id='question' placeholder='question'/>
+                                <label for="keyword"></label>
+                                <input type='text' class='form-control' name='keyword' placeholder='question'/>
                             </div>
                             <button type='submit' class='btn btn-primary'>search question</button>
                         </form>
