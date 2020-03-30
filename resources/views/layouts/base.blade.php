@@ -50,6 +50,7 @@
                                 <login ref='loginbutton'></login>
                                 <register></register>
                             @endif
+                            <lang></lang>
                         </ul>
                         </li>
                     </ul>

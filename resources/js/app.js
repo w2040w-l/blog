@@ -41,6 +41,7 @@ Vue.component('error', require('./components/Error.vue').default);
 Vue.component('register', require('./components/Register.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
 Vue.component('change-password', require('./components/ChangePassword.vue').default);
+Vue.component('lang', require('./components/Lang.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
