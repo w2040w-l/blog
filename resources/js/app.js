@@ -51,4 +51,25 @@ Vue.component('lang', require('./components/Lang.vue').default);
 
 const app = new Vue({
     el: '#app',
+    data: function(){
+        return {
+            lang : null,
+        }
+    },
+    mounted(){
+        axios.get('/js/localization.js')
+            .then((response) => {
+                this.lang = response.data;
+            });
+
+    },
+    methods :{
+        tran: function(str){
+            if(this.lang != null)
+                return this.lang[mylang]['message'][str];
+            else {
+                return str;
+            }
+        }
+    }
 });

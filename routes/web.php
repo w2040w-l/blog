@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +20,10 @@ Route::resource('question', 'QuestionController')->except(['index', 'create']);
 Route::get('/tag/get', 'TagController@getAll');
 Route::resource('tag', 'TagController')->except(['edit','create']);
 Route::get('/question/{qid}/answer/{aid}/comment', 'CommentController@getall');
-Route::get('/language/{lang}',function($lang){
-    App::setLocale($lang);
-    return 1;
+Route::get('/language/{lang}',function(Request $request, $lang){
+    $request->session()->forget('lang');
+    $request->session()->push('lang', $lang);
+    return $request->session()->get('lang');
 });
 Route::get('/question/{qid}/answer/{aid}', 'AnswerController@show');
 Route::middleware(['bancheck', 'auth'])->group(function(){

@@ -2,6 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+@if(Session::get('lang') != null)
+    <script>var mylang = "{{ Session::get('lang')[0] }}"</script>
+@else
+    <script>var mylang = "en"</script>
+@endif
 <link href="/static/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
 <title>@yield('title')</title>
@@ -22,7 +27,7 @@
                 <div class="clearfix menu-main">
                     <ul id="menuSitenav" class="clearfix list-inline">
                         <li class="first-item list-inline-item">
-                        <a href="/" class="home"><span>首页</span></a>
+                        <a href="/" class="home"><span>{{ __('message.index') }}</span></a>
                         </li>
                         <li class="list-inline-item">
                         <form class='form-inline' method='get' action='/search'>
@@ -30,7 +35,7 @@
                                 <label for="keyword"></label>
                                 <input type='text' class='form-control' name='keyword' placeholder='question'/>
                             </div>
-                            <button type='submit' class='btn btn-primary'>search question</button>
+                            <button type='submit' class='btn btn-primary'>{{ __('message.search_question') }}</button>
                         </form>
                         </li>
                         @if(Auth::check())
@@ -43,7 +48,7 @@
                                 <a href="/user/{{ Auth::id() }}" class="home"><span>{{ Auth::user()->username }}</span></a>
                                 </li>
                                 <li class=" list-inline-item">
-                                <a href="/logout" class="btn-link"><span>logout</span></a>
+                                <a href="/logout" class="btn-link"><span>{{ __('message.logout') }}</span></a>
                                 </li>
                                 <change-password></change-password>
                             @else
@@ -70,12 +75,14 @@
         </div>
         <!--底部-->
         <div id="ft">
+            <!--
             <div class="ft-inner"><div class="ft-menu"  id="ft-menu">
                     <a href="/page/lianxiwomen" target="_self">联系我们</a> |  <a href="/list" target="_self">网站新闻</a> | <a href="/comments" target="_self">留言系统</a> |
                     <a href="/links" target="_self">友情链接</a></div>
                 <div class="siteinfo" id="ft-siteinfo">
                     <a href="http://www.miibeian.gov.cn/"></a></p>
             </div></div>
+            --!>
         </div>
     </div>
 </div>
