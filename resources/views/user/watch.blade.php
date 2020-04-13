@@ -10,7 +10,8 @@
                     </a>
                     <ul class='list-inline'>
                         @foreach($watch->question->question_tags as $question_tag)
-                            <li class='list-inline-item'><a href='/tag/{{ $question_tag->tag_id }}'>{{ $question_tag->tag->title }}</a></li>
+                            <li class='list-inline-item'><a href='/tag/{{ $question_tag->tag_id }}'>
+                                {{ $question_tag->tag->title }}</a></li>
                         @endforeach
                     </ul>
                 </div>

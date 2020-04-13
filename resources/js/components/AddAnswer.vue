@@ -1,6 +1,6 @@
 <template>
   <span>
-    <button class='btn btn-primary float-left' v-on:click='ashow'>answer</button>
+    <button class='btn btn-primary float-left' v-on:click='ashow'>{{ $root.tran('answer') }}</button>
     <div class='answer' v-if='show == 1'>
       <div class='card '>
         <div class=' card-body'>
@@ -11,8 +11,8 @@
               </textarea>
             </div>
           </div>
-          <button v-on:click='create' class='btn btn-primary'>submit question</button>
-          <button v-on:click='cancel' class='btn btn-link'>cancel</button>
+          <button v-on:click='create' class='btn btn-primary'>{{ $root.tran('submit_question') }}</button>
+          <button v-on:click='cancel' class='btn btn-link'>{{ $root.tran('cancel') }}</button>
         </div>
       </div>
     </div>

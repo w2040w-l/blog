@@ -22,7 +22,7 @@
                 </div>
                 <div class='float-right'>
                     <a  href='/question/{{ $answer->question->id }}/answer/{{ $answer->id }}'>
-                        updated_at {{ $answer->updated_at }}</a>
+                        {{ __('message.updated_at') }} {{ $answer->updated_at }}</a>
                 </div>
             @endif
             <br/>
@@ -37,7 +37,7 @@
                             ></appvote-button>
                         </div>
                     @else
-                        <button class='btn btn-default btn-sm' >{{ $answer->approves()->count() }}</br>upvote</button>
+                        <button class='btn btn-default btn-sm' >{{ $answer->approves()->count() }}</br>{{ __('message.upvote') }}</button>
                     @endif
                     </li>
                     <li class='list-inline-item'>
@@ -51,7 +51,7 @@
                         <form class="form-inline " method="post" action="/question/{{ $answer->question->id }}/answer/{{ $answer->id }}">
                             @csrf
                             @method("delete")
-                            <button type='submit' class='btn btn-danger btn-sm' >delete</button>
+                            <button type='submit' class='btn btn-danger btn-sm' >{{ __('message.delete') }}</button>
                         </form>
                         </li>
                     @endif
@@ -61,9 +61,11 @@
     </div>
 
     @if(Auth::check())
-        <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' iusername='{{ Auth::user()->username }}'></comments>
+        <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}'
+        iqid='{{ $answer->question->id }}' iusername='{{ Auth::user()->username }}'></comments>
     @else
-        <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}' iqid='{{ $answer->question->id }}' iusername=''></comments>
+        <comments ref='comments{{ $answer->id }}' iuid='{{ Auth::id() }}' iaid='{{ $answer->id }}'
+        iqid='{{ $answer->question->id }}' iusername=''></comments>
     @endif
 </div>
 

@@ -1,17 +1,17 @@
 <template>
   <div>
-    <button class='btn btn-primary push-left' v-on:click='popCreate'>edit tag</button>
+    <button class='btn btn-primary push-left' v-on:click='popCreate'>{{ $root.tran('edit_tag') }}</button>
     <popup ref='addTag' iwidth='600' >
       <div class='form-group'>
-        <label for='title'>tag name</label>
+        <label for='title'>{{ $root.tran('tag_name') }}</label>
         <h4>{{ title }}</h4>
       </div>
       <div class='form-group'>
-        <label for='content'>tag intro</label>
+        <label for='content'>{{ $root.tran('tag_intro') }}</label>
         <textarea class='form-control' id='content' name='content' v-model='content'>
         </textarea>
       </div>
-      <button type="submit" class='btn btn-primary' v-on:click='create'>submit tag</button>
+      <button type="submit" class='btn btn-primary' v-on:click='create'>{{ $root.tran('submit_tag') }}</button>
     </popup>
   </div>
 </template>

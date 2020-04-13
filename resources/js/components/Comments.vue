@@ -6,13 +6,14 @@
           <a v-bind:href="'/user/'+comment.user.id">{{ comment.user.username }}</a>:
           {{ comment.content }}
         </div>
-        <button v-if='iuid == comment.user.id' v-on:click='removeComment(index, comment.id)'class='btn-sm btn-danger btn-link' >delete</button>
+        <button v-if='iuid == comment.user.id' v-on:click='removeComment(index, comment.id)' 
+          class='btn-sm btn-danger btn-link' >{{ $root.tran('delete') }}</button>
       </div>
       <div v-if='iuid' class='form-group'>
-        <label for='content'>comment content</label>
+        <label for='content'>{{ $root.tran('comment_content') }}</label>
         <textarea class='form-control' id='content' name='content' v-model='content'>
         </textarea>
-        <button type="submit" class='btn btn-primary' v-on:click='create'>submit comment</button>
+        <button type="submit" class='btn btn-primary' v-on:click='create'>{{ $root.tran('submit_comment') }}</button>
       </div>
     </div>
   </div>

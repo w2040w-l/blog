@@ -1,6 +1,6 @@
 <template>
   <li class="list-inline-item">
-    <button v-on:click="makeToggle">language</button>
+    <button v-on:click="makeToggle">{{ $root.tran('language') }}</button>
     <ul class='toggle list-unstyled' v-if="this.toggle == 1">
       <li v-for='tag in this.tags'>
         <a class='btn' v-on:click="changeLang(tag)">{{ tag }}</a>

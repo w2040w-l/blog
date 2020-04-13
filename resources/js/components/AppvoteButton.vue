@@ -1,9 +1,9 @@
 <template>
   <button v-if='appvote==0' v-on:click='rmup' type='submit' class='btn btn-primary
-    btn-sm'>{{ approves }} cancel upvote</button>
+    btn-sm'>{{ approves }} {{ $root.tran('cancel_upvote') }}</button>
   <button v-else v-on:click="up" type='submit'
     class='btn btn-default btn-sm btn-outline-info'
-  >{{ approves }} upvote</button>
+  >{{ approves }} {{ $root.tran('upvote') }}</button>
 </template>
 
 <script>

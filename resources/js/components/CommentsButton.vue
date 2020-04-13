@@ -1,5 +1,5 @@
 <template>
-  <a class="btn btn-default btn-sm" role="button" v-on:click='changeToggle'> {{ count }} comments</a>
+  <a class="btn btn-default btn-sm" role="button" v-on:click='changeToggle'> {{ count }} {{ $root.tran('comments') }}</a>
 </template>
 
 <script>

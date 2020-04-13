@@ -33,7 +33,7 @@
                         <form class='form-inline' method='get' action='/search'>
                             <div class='form-group'>
                                 <label for="keyword"></label>
-                                <input type='text' class='form-control' name='keyword' placeholder='question'/>
+                                <input type='text' class='form-control' name='keyword' placeholder='{{ __('message.question') }}'/>
                             </div>
                             <button type='submit' class='btn btn-primary'>{{ __('message.search_question') }}</button>
                         </form>

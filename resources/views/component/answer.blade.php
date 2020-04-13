@@ -13,7 +13,7 @@
                 </div>
                 <div class='float-right'>
                     <a  href='/question/{{ $question->id }}/answer/{{ $answer->id }}'>
-                        updated_at {{ $answer->updated_at }}</a>
+                        {{ __('message.updated_at') }}{{ $answer->updated_at }}</a>
                 </div>
             @endif
             </br>
@@ -27,7 +27,7 @@
                         iappvote={{ \App\Model\User::find(Auth::id())->haveapp($answer->id)?0:1 }}
                         ></appvote-button>
                     @else
-                        <button class='btn btn-default btn-sm' >{{ $answer->approves()->count() }}</br>upvote</button>
+                        <button class='btn btn-default btn-sm' >{{ $answer->approves()->count() }}</br>{{ __('message.upvote') }}</button>
                     @endif
                     </li>
                     <li class='list-inline-item'>
@@ -41,7 +41,7 @@
                         <form class="form-inline " method="post" action="/question/{{ $question->id }}/answer/{{ $answer->id }}">
                             @csrf
                             @method("delete")
-                            <button type='submit' class='btn btn-danger btn-sm' >delete</button>
+                            <button type='submit' class='btn btn-danger btn-sm' >{{ __('message.delete') }}</button>
                         </form>
                         </li>
                     @endif

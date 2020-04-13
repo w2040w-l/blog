@@ -1,16 +1,16 @@
 <template>
-  <li class=" list-inline-item">
-    <button v-on:click='popCreate' class="home btn-link btn"><span>change password</span></button>
+  <li class=" list-inline-item" >
+    <button v-on:click='popCreate' class="home btn-link btn"><span>{{ $root.tran('change_password') }}</span></button>
     <popup ref='register' iwidth='400'>
       <div class='form-group'>
-        <label for='oldpassword' >old password</label>
+        <label for='oldpassword' >{{ $root.tran('old_password') }}</label>
         <input v-model='password' class='form-control' name="password" type="password" />
       </div>
       <div class='form-group'>
-        <label for='newpassword' >new password</label>
+        <label for='newpassword' >{{ $root.tran('new_password') }}</label>
         <input v-model='newpassword' class='form-control' name="newpassword" type='password' />
       </div>
-      <button type="submit" class='btn btn-primary ' v-on:click='change'>change password</button>
+      <button type="submit" class='btn btn-primary ' v-on:click='change'>{{ $root.tran('change_password') }}</button>
     </popup>
   </li>
 </template>
@@ -22,10 +22,12 @@ export default{
     return {
       show : 0,
       newpassword: null,
-      password: null
+      password: null,
+      lang: []
     }
   },
   mounted(){
+    this.lang = this.$root.lang;
   },
 
   methods:{

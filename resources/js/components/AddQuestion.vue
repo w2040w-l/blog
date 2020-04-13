@@ -1,14 +1,14 @@
 <template>
   <li class='align-bottom list-inline-item'>
-    <button v-on:click='popCreate' class='btn btn-primary'>ask new question</button>
+    <button v-on:click='popCreate' class='btn btn-primary'>{{ $root.tran('ask_question') }}</button>
     <popup ref='addQstn' iwidth='600' >
       <div method="post" v-on:click='closeToggle'>
         <div class='form-group'>
-          <label for='title'>question title</label>
+          <label for='title'>{{ $root.tran('question_title') }}</label>
           <input type='text' class='form-control' id='title' name='title' v-model='title'/>
         </div>
         <div class='form-group'>
-          <label for='content'>question content</label>
+          <label for='content'>{{ $root.tran('question_content') }}</label>
           <textarea class='form-control' id='content' name='content' v-model='desc' v-on:keyup="resize" v-bind:rows='row'></textarea>
         </div>
         <ul class='list-inline '>
@@ -18,7 +18,7 @@
           <li class='list-inline-item align-top' v-if='tags.length < 5'>
             <ul class='list-unstyled'>
               <li>
-                <a class="btn btn-default" v-on:click.stop='makeToggle'>add tag</a>
+                <a class="btn btn-default" v-on:click.stop='makeToggle'>{{ $root.tran('add_tag') }}</a>
               </li>
               <li v-for="tag in atags" v-if='toggle == 1 && tag.use != 1'>
                 <a class='btn btn-link ' v-on:click='addTag(tag)'>{{ tag.title }}</a>
@@ -26,7 +26,7 @@
             </ul>
           </li>
         </ul>
-        <button type="submit" class='btn btn-primary' v-on:click='create'>submit question</button>
+        <button type="submit" class='btn btn-primary' v-on:click='create'>{{ $root.tran('submit_question') }}</button>
       </div>
     </popup>
   </li>

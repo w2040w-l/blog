@@ -1,5 +1,5 @@
 <template>
-  <a class='btn btn-sm btn-default' v-on:click='openEdit'>edit</a>
+  <a class='btn btn-sm btn-default' v-on:click='openEdit'>{{ $root.tran('edit') }}</a>
 </template>
 
 <script>

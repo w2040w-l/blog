@@ -2209,10 +2209,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       show: 0,
       newpassword: null,
-      password: null
+      password: null,
+      lang: []
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.lang = this.$root.lang;
+  },
   methods: {
     change: function change() {
       var _this = this;
@@ -2243,6 +2246,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -38540,7 +38544,7 @@ var render = function() {
     _c(
       "button",
       { staticClass: "btn btn-primary float-left", on: { click: _vm.ashow } },
-      [_vm._v("answer")]
+      [_vm._v(_vm._s(_vm.$root.tran("answer")))]
     ),
     _vm._v(" "),
     _vm.show == 1
@@ -38584,13 +38588,13 @@ var render = function() {
               _c(
                 "button",
                 { staticClass: "btn btn-primary", on: { click: _vm.create } },
-                [_vm._v("submit question")]
+                [_vm._v(_vm._s(_vm.$root.tran("submit_question")))]
               ),
               _vm._v(" "),
               _c(
                 "button",
                 { staticClass: "btn btn-link", on: { click: _vm.cancel } },
-                [_vm._v("cancel")]
+                [_vm._v(_vm._s(_vm.$root.tran("cancel")))]
               )
             ])
           ])
@@ -38627,7 +38631,7 @@ var render = function() {
       _c(
         "button",
         { staticClass: "btn btn-primary", on: { click: _vm.popCreate } },
-        [_vm._v("ask new question")]
+        [_vm._v(_vm._s(_vm.$root.tran("ask_question")))]
       ),
       _vm._v(" "),
       _c("popup", { ref: "addQstn", attrs: { iwidth: "600" } }, [
@@ -38637,7 +38641,7 @@ var render = function() {
           [
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "title" } }, [
-                _vm._v("question title")
+                _vm._v(_vm._s(_vm.$root.tran("question_title")))
               ]),
               _vm._v(" "),
               _c("input", {
@@ -38665,7 +38669,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "content" } }, [
-                _vm._v("question content")
+                _vm._v(_vm._s(_vm.$root.tran("question_content")))
               ]),
               _vm._v(" "),
               _c("textarea", {
@@ -38737,7 +38741,7 @@ var render = function() {
                                   }
                                 }
                               },
-                              [_vm._v("add tag")]
+                              [_vm._v(_vm._s(_vm.$root.tran("add_tag")))]
                             )
                           ]),
                           _vm._v(" "),
@@ -38775,7 +38779,7 @@ var render = function() {
                 attrs: { type: "submit" },
                 on: { click: _vm.create }
               },
-              [_vm._v("submit question")]
+              [_vm._v(_vm._s(_vm.$root.tran("submit_question")))]
             )
           ]
         )
@@ -38812,12 +38816,14 @@ var render = function() {
       _c(
         "button",
         { staticClass: "btn btn-primary", on: { click: _vm.popCreate } },
-        [_vm._v("make a new tag")]
+        [_vm._v(_vm._s(_vm.$root.tran("new_tag")))]
       ),
       _vm._v(" "),
       _c("popup", { ref: "addTag", attrs: { iwidth: "600" } }, [
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "title" } }, [_vm._v("tag name")]),
+          _c("label", { attrs: { for: "title" } }, [
+            _vm._v(_vm._s(_vm.$root.tran("tag_name")))
+          ]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -38843,7 +38849,9 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "content" } }, [_vm._v("tag intro")]),
+          _c("label", { attrs: { for: "content" } }, [
+            _vm._v(_vm._s(_vm.$root.tran("tag_intro")))
+          ]),
           _vm._v(" "),
           _c("textarea", {
             directives: [
@@ -38875,7 +38883,7 @@ var render = function() {
             attrs: { type: "submit" },
             on: { click: _vm.create }
           },
-          [_vm._v("submit tag")]
+          [_vm._v(_vm._s(_vm.$root.tran("submit_tag")))]
         )
       ])
     ],
@@ -38912,7 +38920,11 @@ var render = function() {
           attrs: { type: "submit" },
           on: { click: _vm.rmup }
         },
-        [_vm._v(_vm._s(_vm.approves) + " cancel upvote")]
+        [
+          _vm._v(
+            _vm._s(_vm.approves) + " " + _vm._s(_vm.$root.tran("cancel_upvote"))
+          )
+        ]
       )
     : _c(
         "button",
@@ -38921,7 +38933,7 @@ var render = function() {
           attrs: { type: "submit" },
           on: { click: _vm.up }
         },
-        [_vm._v(_vm._s(_vm.approves) + " upvote")]
+        [_vm._v(_vm._s(_vm.approves) + " " + _vm._s(_vm.$root.tran("upvote")))]
       )
 }
 var staticRenderFns = []
@@ -38953,13 +38965,13 @@ var render = function() {
       _c(
         "button",
         { staticClass: "home btn-link btn", on: { click: _vm.popCreate } },
-        [_c("span", [_vm._v("change password")])]
+        [_c("span", [_vm._v(_vm._s(_vm.$root.tran("change_password")))])]
       ),
       _vm._v(" "),
       _c("popup", { ref: "register", attrs: { iwidth: "400" } }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "oldpassword" } }, [
-            _vm._v("old password")
+            _vm._v(_vm._s(_vm.$root.tran("old_password")))
           ]),
           _vm._v(" "),
           _c("input", {
@@ -38987,7 +38999,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "newpassword" } }, [
-            _vm._v("new password")
+            _vm._v(_vm._s(_vm.$root.tran("new_password")))
           ]),
           _vm._v(" "),
           _c("input", {
@@ -39020,7 +39032,7 @@ var render = function() {
             attrs: { type: "submit" },
             on: { click: _vm.change }
           },
-          [_vm._v("change password")]
+          [_vm._v(_vm._s(_vm.$root.tran("change_password")))]
         )
       ])
     ],
@@ -39075,7 +39087,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("delete")]
+                      [_vm._v(_vm._s(_vm.$root.tran("delete")))]
                     )
                   : _vm._e()
               ])
@@ -39084,7 +39096,7 @@ var render = function() {
             _vm.iuid
               ? _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "content" } }, [
-                    _vm._v("comment content")
+                    _vm._v(_vm._s(_vm.$root.tran("comment_content")))
                   ]),
                   _vm._v(" "),
                   _c("textarea", {
@@ -39116,7 +39128,7 @@ var render = function() {
                       attrs: { type: "submit" },
                       on: { click: _vm.create }
                     },
-                    [_vm._v("submit comment")]
+                    [_vm._v(_vm._s(_vm.$root.tran("submit_comment")))]
                   )
                 ])
               : _vm._e()
@@ -39155,7 +39167,7 @@ var render = function() {
       attrs: { role: "button" },
       on: { click: _vm.changeToggle }
     },
-    [_vm._v(" " + _vm._s(_vm.count) + " comments")]
+    [_vm._v(" " + _vm._s(_vm.count) + " " + _vm._s(_vm.$root.tran("comments")))]
   )
 }
 var staticRenderFns = []
@@ -39183,7 +39195,7 @@ var render = function() {
   return _c(
     "a",
     { staticClass: "btn btn-sm btn-default", on: { click: _vm.openEdit } },
-    [_vm._v("edit")]
+    [_vm._v(_vm._s(_vm.$root.tran("edit")))]
   )
 }
 var staticRenderFns = []
@@ -39217,7 +39229,7 @@ var render = function() {
           staticClass: "btn btn-link float-right",
           on: { click: _vm.popCreate }
         },
-        [_vm._v("change")]
+        [_vm._v(_vm._s(_vm.$root.tran("edit")))]
       ),
       _vm._v(" "),
       _c("popup", { ref: "addQstn", attrs: { iwidth: "600" } }, [
@@ -39227,7 +39239,7 @@ var render = function() {
           [
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "title" } }, [
-                _vm._v("question title")
+                _vm._v(_vm._s(_vm.$root.tran("question_title")))
               ]),
               _vm._v(" "),
               _c("input", {
@@ -39255,7 +39267,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "content" } }, [
-                _vm._v("question content")
+                _vm._v(_vm._s(_vm.$root.tran("question_content")))
               ]),
               _vm._v(" "),
               _c("textarea", {
@@ -39326,7 +39338,7 @@ var render = function() {
                                   }
                                 }
                               },
-                              [_vm._v("add tag")]
+                              [_vm._v(_vm._s(_vm.$root.tran("add_tag")))]
                             )
                           ]),
                           _vm._v(" "),
@@ -39364,7 +39376,7 @@ var render = function() {
                 attrs: { type: "submit" },
                 on: { click: _vm.edit }
               },
-              [_vm._v("submit question")]
+              [_vm._v(_vm._s(_vm.$root.tran("submit_question")))]
             )
           ]
         )
@@ -39404,18 +39416,22 @@ var render = function() {
           staticClass: "btn btn-primary push-left",
           on: { click: _vm.popCreate }
         },
-        [_vm._v("edit tag")]
+        [_vm._v(_vm._s(_vm.$root.tran("edit_tag")))]
       ),
       _vm._v(" "),
       _c("popup", { ref: "addTag", attrs: { iwidth: "600" } }, [
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "title" } }, [_vm._v("tag name")]),
+          _c("label", { attrs: { for: "title" } }, [
+            _vm._v(_vm._s(_vm.$root.tran("tag_name")))
+          ]),
           _vm._v(" "),
           _c("h4", [_vm._v(_vm._s(_vm.title))])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "content" } }, [_vm._v("tag intro")]),
+          _c("label", { attrs: { for: "content" } }, [
+            _vm._v(_vm._s(_vm.$root.tran("tag_intro")))
+          ]),
           _vm._v(" "),
           _c("textarea", {
             directives: [
@@ -39447,7 +39463,7 @@ var render = function() {
             attrs: { type: "submit" },
             on: { click: _vm.create }
           },
-          [_vm._v("submit tag")]
+          [_vm._v(_vm._s(_vm.$root.tran("submit_tag")))]
         )
       ])
     ],
@@ -39728,7 +39744,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("li", { staticClass: "list-inline-item" }, [
-    _c("button", { on: { click: _vm.makeToggle } }, [_vm._v("language")]),
+    _c("button", { on: { click: _vm.makeToggle } }, [
+      _vm._v(_vm._s(_vm.$root.tran("language")))
+    ]),
     _vm._v(" "),
     this.toggle == 1
       ? _c(
@@ -52376,7 +52394,26 @@ Vue.component('lang', __webpack_require__(/*! ./components/Lang.vue */ "./resour
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: function data() {
+    return {
+      lang: null
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/js/localization.js').then(function (response) {
+      _this.lang = response.data;
+    });
+  },
+  methods: {
+    tran: function tran(str) {
+      if (this.lang != null) return this.lang[mylang]['message'][str];else {
+        return str;
+      }
+    }
+  }
 });
 
 /***/ }),
