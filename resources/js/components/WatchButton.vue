@@ -1,7 +1,7 @@
 <template>
   <span v-if='havelogin'>
-    <button v-if='have==0' v-on:click='watch' type='submit' class='btn btn-default'>watch</button>
-    <button v-else v-on:click='unwatch' type='submit' class='btn btn-primary'>unwatch</button>
+    <button v-if='have==0' v-on:click='watch' type='submit' class='btn btn-default'>{{ $root.tran('watch') }}</button>
+    <button v-else v-on:click='unwatch' type='submit' class='btn btn-primary'>{{ $root.tran('unwatch') }}</button>
   </span>
 </template>
 

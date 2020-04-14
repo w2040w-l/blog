@@ -5,7 +5,7 @@
     </div>
     <div class='float-right'>
       <a v-bind:href="'/question/'+ this.iqid +'/answer/'+this.iaid">
-        updated_at {{ updated_at }}</a>
+        {{ $root.tran('updated_at') }} {{ updated_at }}</a>
     </div>
   </span>
   <span v-else>
@@ -15,8 +15,8 @@
         </textarea>
       </div>
     </div>
-    <button v-on:click='edit' class='btn btn-primary'>submit question</button>
-    <button v-on:click='cancel' class='btn btn-link'>cancel</button>
+    <button v-on:click='edit' class='btn btn-primary'>{{ $root.tran('submit_answer') }}</button>
+    <button v-on:click='cancel' class='btn btn-link'>{{ $root.tran('cancel') }}</button>
     <br/>
   </span>
 </template>

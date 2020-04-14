@@ -39584,7 +39584,7 @@ var render = function() {
             attrs: { type: "submit" },
             on: { click: _vm.follow }
           },
-          [_vm._v("follow")]
+          [_vm._v(_vm._s(_vm.$root.tran("follow")))]
         )
       : _c(
           "button",
@@ -39593,7 +39593,7 @@ var render = function() {
             attrs: { type: "submit" },
             on: { click: _vm.unfollow }
           },
-          [_vm._v("unfollow")]
+          [_vm._v(_vm._s(_vm.$root.tran("unfollow")))]
         )
   ])
 }
@@ -39624,7 +39624,7 @@ var render = function() {
     { staticClass: "list-inline-item" },
     [
       _c("a", { staticClass: "btn btn-default", on: { click: _vm.showPop } }, [
-        _vm._v(_vm._s(_vm.follows) + " followers")
+        _vm._v(_vm._s(_vm.follows) + " " + _vm._s(_vm.$root.tran("followers")))
       ]),
       _vm._v(" "),
       _c("popup", { ref: "followPop", attrs: { iwidth: "500" } }, [
@@ -39686,7 +39686,7 @@ var render = function() {
     { staticClass: "list-inline-item" },
     [
       _c("a", { staticClass: "btn btn-default", on: { click: _vm.showPop } }, [
-        _vm._v(_vm._s(_vm.follows) + " followings")
+        _vm._v(_vm._s(_vm.follows) + " " + _vm._s(_vm.$root.tran("followings")))
       ]),
       _vm._v(" "),
       _c("popup", { ref: "followPop", attrs: { iwidth: "500" } }, [
@@ -39802,12 +39802,14 @@ var render = function() {
       _c(
         "button",
         { staticClass: "home btn-link btn", on: { click: _vm.popCreate } },
-        [_c("span", [_vm._v("login")])]
+        [_c("span", [_vm._v(_vm._s(_vm.$root.tran("login")))])]
       ),
       _vm._v(" "),
       _c("popup", { ref: "login", attrs: { iwidth: "400" } }, [
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "username" } }, [_vm._v("username")]),
+          _c("label", { attrs: { for: "username" } }, [
+            _vm._v(_vm._s(_vm.$root.tran("username")))
+          ]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -39833,7 +39835,9 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "password" } }, [_vm._v("password")]),
+          _c("label", { attrs: { for: "password" } }, [
+            _vm._v(_vm._s(_vm.$root.tran("password")))
+          ]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -39865,7 +39869,7 @@ var render = function() {
             attrs: { type: "submit" },
             on: { click: _vm.login }
           },
-          [_vm._v("login")]
+          [_vm._v(_vm._s(_vm.$root.tran("login")))]
         )
       ])
     ],
@@ -39909,7 +39913,14 @@ var render = function() {
             {
               attrs: { href: "/question/" + this.iqid + "/answer/" + this.iaid }
             },
-            [_vm._v("\n      updated_at " + _vm._s(_vm.updated_at))]
+            [
+              _vm._v(
+                "\n      " +
+                  _vm._s(_vm.$root.tran("updated_at")) +
+                  " " +
+                  _vm._s(_vm.updated_at)
+              )
+            ]
           )
         ])
       ])
@@ -39943,13 +39954,13 @@ var render = function() {
         _c(
           "button",
           { staticClass: "btn btn-primary", on: { click: _vm.edit } },
-          [_vm._v("submit question")]
+          [_vm._v(_vm._s(_vm.$root.tran("submit_answer")))]
         ),
         _vm._v(" "),
         _c(
           "button",
           { staticClass: "btn btn-link", on: { click: _vm.cancel } },
-          [_vm._v("cancel")]
+          [_vm._v(_vm._s(_vm.$root.tran("cancel")))]
         ),
         _vm._v(" "),
         _c("br")
@@ -40029,12 +40040,14 @@ var render = function() {
       _c(
         "button",
         { staticClass: "home btn-link btn", on: { click: _vm.popCreate } },
-        [_c("span", [_vm._v("register")])]
+        [_c("span", [_vm._v(_vm._s(_vm.$root.tran("register")))])]
       ),
       _vm._v(" "),
       _c("popup", { ref: "register", attrs: { iwidth: "400" } }, [
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "username" } }, [_vm._v("username")]),
+          _c("label", { attrs: { for: "username" } }, [
+            _vm._v(_vm._s(_vm.$root.tran("username")))
+          ]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -40060,7 +40073,9 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "password" } }, [_vm._v("password")]),
+          _c("label", { attrs: { for: "password" } }, [
+            _vm._v(_vm._s(_vm.$root.tran("password")))
+          ]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -40092,7 +40107,7 @@ var render = function() {
             attrs: { type: "submit" },
             on: { click: _vm.register }
           },
-          [_vm._v("register")]
+          [_vm._v(_vm._s(_vm.$root.tran("register")))]
         )
       ])
     ],
@@ -40131,7 +40146,7 @@ var render = function() {
                 attrs: { type: "submit" },
                 on: { click: _vm.watch }
               },
-              [_vm._v("watch")]
+              [_vm._v(_vm._s(_vm.$root.tran("watch")))]
             )
           : _c(
               "button",
@@ -40140,7 +40155,7 @@ var render = function() {
                 attrs: { type: "submit" },
                 on: { click: _vm.unwatch }
               },
-              [_vm._v("unwatch")]
+              [_vm._v(_vm._s(_vm.$root.tran("unwatch")))]
             )
       ])
     : _vm._e()
@@ -40168,7 +40183,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("p", { staticClass: "float-right" }, [
-    _vm._v(_vm._s(_vm.watches) + " peoples is watching")
+    _vm._v(
+      _vm._s(_vm.watches) + " " + _vm._s(_vm.$root.tran("peoples_watching"))
+    )
   ])
 }
 var staticRenderFns = []

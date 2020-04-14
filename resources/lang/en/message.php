@@ -15,7 +15,7 @@
         'search_question' => 'search question',
         'question' => 'question',
         'language' => 'language',
-        'submit_question' => 'submit question',
+        'submit_answer' => 'submit answer',
         'cancel' => 'cancel',
         'question_title' => 'question title',
         'ask_question' => 'ask new question',
@@ -46,6 +46,17 @@
         'edit' => 'edit',
         'submit_question' => 'submit question',
         'edit_tag' => 'edit tag',
+        'follow' => 'follow',
+        'unfollow' => 'unfollow',
+        'followers' => 'followers',
+        'followings' => 'followings',
+        'username' => 'username',
+        'password' => 'password',
+        'login' => 'login',
+        'register' => 'register',
+        'watch' => 'watch',
+        'unwatch' => 'unwatch',
+        'peoples_watching' => 'peoples is watching',
 
     ];
     ?>

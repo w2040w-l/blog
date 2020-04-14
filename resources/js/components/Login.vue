@@ -1,16 +1,16 @@
 <template>
   <li class=" list-inline-item">
-    <button v-on:click='popCreate' class="home btn-link btn"><span>login</span></button>
+    <button v-on:click='popCreate' class="home btn-link btn"><span>{{ $root.tran('login') }}</span></button>
     <popup ref='login' iwidth='400'>
       <div class='form-group'>
-        <label for='username' >username</label>
+        <label for='username' >{{ $root.tran('username') }}</label>
         <input v-model='username' class='form-control' name="username" type="text" />
       </div>
       <div class='form-group'>
-        <label for='password' >password</label>
+        <label for='password' >{{ $root.tran('password') }}</label>
         <input v-model='password' class='form-control' name="password" type='password' />
       </div>
-      <button type="submit" class='btn btn-primary ' v-on:click='login'>login</button>
+      <button type="submit" class='btn btn-primary ' v-on:click='login'>{{ $root.tran('login') }}</button>
     </popup>
   </li>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <span >
-    <button v-if='have==0' v-on:click='follow' type='submit' class='btn btn-default'>follow</button>
-    <button v-else v-on:click='unfollow' type='submit' class='btn btn-primary'>unfollow</button>
+    <button v-if='have==0' v-on:click='follow' type='submit' class='btn btn-default'>{{ $root.tran('follow') }}</button>
+    <button v-else v-on:click='unfollow' type='submit' class='btn btn-primary'>{{ $root.tran('unfollow') }}</button>
   </span>
 </template>
 

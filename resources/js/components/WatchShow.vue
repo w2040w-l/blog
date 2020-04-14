@@ -1,5 +1,5 @@
 <template>
-    <p class='float-right'>{{ watches }} peoples is watching</p>
+    <p class='float-right'>{{ watches }} {{ $root.tran('peoples_watching') }}</p>
 </template>
 
 <script>

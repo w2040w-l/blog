@@ -1,5 +1,5 @@
 <template>
-  <li class='list-inline-item'><a class='btn btn-default' v-on:click='showPop' >{{ follows }} followers</a>
+  <li class='list-inline-item'><a class='btn btn-default' v-on:click='showPop' >{{ follows }} {{ $root.tran('followers') }}</a>
     <popup iwidth='500' ref='followPop'>
       <ul class='list-unstyled'>
 
