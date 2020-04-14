@@ -13,3 +13,4 @@ npm-debug.log
 yarn-error.log
 Session.vim
 /stat.sh
+sql/now.sql
