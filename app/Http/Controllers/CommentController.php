@@ -11,6 +11,8 @@ class CommentController extends Controller{
         $vaild = $request->validate(['content' => 'required']);
         $comment = new Commentmy;
         $comment->content= $request->content;
+        $comment->reply= $request->reply;
+        $comment->reply_user= $request->reply_user;
         $comment->answer_id = $aid;
         $comment->user_id = Auth::id();
         $comment->save();

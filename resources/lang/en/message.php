@@ -58,6 +58,8 @@
         'watch' => 'watch',
         'unwatch' => 'unwatch',
         'peoples_watching' => 'peoples is watching',
+        'reply_to' => 'reply to',
+        'reply' => 'reply',
 
     ];
     ?>

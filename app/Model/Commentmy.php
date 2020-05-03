@@ -12,4 +12,7 @@ class Commentmy extends Model
     public function user(){
         return $this->belongsTo('App\Model\User');
     }
+    public function reply(){
+        return $this->hasMany('App\Model\Commentmy', 'id', 'reply');
+    }
 }

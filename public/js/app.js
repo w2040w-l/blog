@@ -2267,6 +2267,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['iuid', 'iusername', 'iqid', 'iaid'],
   data: function data() {
@@ -2274,18 +2284,32 @@ __webpack_require__.r(__webpack_exports__);
       comments: [],
       show: 0,
       init: 0,
-      content: null
+      content: null,
+      reply_user: null
     };
   },
   mounted: function mounted() {},
   methods: {
+    reply: function reply(index, username) {
+      this.reply_user = username;
+      this.replyid = index;
+      this.content = null;
+      this.$refs.reply.focus();
+    },
+    clear: function clear() {
+      this.reply_user = null;
+      this.replyid = null;
+      this.content = null;
+    },
     create: function create() {
       var _this = this;
 
       axios.post('/question/' + this.iqid + '/answer/' + this.iaid + '/comment', {
-        'content': this.content
+        'content': this.content,
+        'reply_user': this.reply_user,
+        'reply': this.replyid
       }).then(function (response) {
-        _this.content = null;
+        _this.clear();
 
         _this.comments.push(response.data);
 
@@ -39152,28 +39176,56 @@ var render = function() {
           { staticClass: "card-body" },
           [
             _vm._l(_vm.comments, function(comment, index) {
-              return _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-10 col-md-offset-1" }, [
-                  _c("a", { attrs: { href: "/user/" + comment.user.id } }, [
-                    _vm._v(_vm._s(comment.user.username))
-                  ]),
-                  _vm._v(":\n        " + _vm._s(comment.content) + "\n      ")
-                ]),
-                _vm._v(" "),
-                _vm.iuid == comment.user.id
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn-sm btn-danger btn-link",
-                        on: {
-                          click: function($event) {
-                            return _vm.removeComment(index, comment.id)
-                          }
+              return _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  comment.reply_user == null
+                    ? _c("a", { attrs: { href: "/user/" + comment.user.id } }, [
+                        _vm._v(_vm._s(comment.user.username))
+                      ])
+                    : _c("span", [
+                        _c(
+                          "a",
+                          { attrs: { href: "/user/" + comment.user.id } },
+                          [_vm._v(_vm._s(comment.user.username))]
+                        ),
+                        _vm._v(" " + _vm._s(_vm.$root.tran("reply_to")) + " "),
+                        _c("a", { attrs: { href: "/user/" + comment.reply } }, [
+                          _vm._v(_vm._s(comment.reply_user))
+                        ])
+                      ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v("\n        " + _vm._s(comment.content) + "\n      "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn-sm btn-link",
+                      on: {
+                        click: function($event) {
+                          return _vm.reply(comment.id, comment.user.username)
                         }
-                      },
-                      [_vm._v(_vm._s(_vm.$root.tran("delete")))]
-                    )
-                  : _vm._e()
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.$root.tran("reply")))]
+                  ),
+                  _vm._v(" "),
+                  _vm.iuid == comment.user.id
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn-sm btn-danger btn-link",
+                          on: {
+                            click: function($event) {
+                              return _vm.removeComment(index, comment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$root.tran("delete")))]
+                      )
+                    : _vm._e()
+                ])
               ])
             }),
             _vm._v(" "),
@@ -39183,27 +39235,56 @@ var render = function() {
                     _vm._v(_vm._s(_vm.$root.tran("comment_content")))
                   ]),
                   _vm._v(" "),
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.content,
-                        expression: "content"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { id: "content", name: "content" },
-                    domProps: { value: _vm.content },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _vm.reply_user
+                    ? _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.content,
+                            expression: "content"
+                          }
+                        ],
+                        ref: "reply",
+                        staticClass: "form-control",
+                        attrs: {
+                          placeholder:
+                            _vm.$root.tran("reply") + " " + this.reply_user,
+                          id: "content",
+                          name: "content"
+                        },
+                        domProps: { value: _vm.content },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.content = $event.target.value
+                          }
                         }
-                        _vm.content = $event.target.value
-                      }
-                    }
-                  }),
+                      })
+                    : _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.content,
+                            expression: "content"
+                          }
+                        ],
+                        ref: "reply",
+                        staticClass: "form-control",
+                        attrs: { id: "content", name: "content" },
+                        domProps: { value: _vm.content },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.content = $event.target.value
+                          }
+                        }
+                      }),
                   _vm._v(" "),
                   _c(
                     "button",
@@ -39213,6 +39294,12 @@ var render = function() {
                       on: { click: _vm.create }
                     },
                     [_vm._v(_vm._s(_vm.$root.tran("submit_comment")))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    { staticClass: "btn ", on: { click: _vm.clear } },
+                    [_vm._v(_vm._s(_vm.$root.tran("cancel")))]
                   )
                 ])
               : _vm._e()

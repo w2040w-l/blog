@@ -19,7 +19,6 @@ class ImportController extends Controller{
         if(Auth::user()->isroot != 1){
             abort(404);
         }
-        return 0;
         $answers = json_decode(file_get_contents(storage_path().'/quotes.json'), true);
         $flag = 0;
         $questions = $answers[0];
