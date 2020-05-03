@@ -14,3 +14,4 @@ yarn-error.log
 Session.vim
 /stat.sh
 sql/now.sql
+/storage/*.json

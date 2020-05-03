@@ -27,6 +27,7 @@ Route::get('/language/{lang}',function(Request $request, $lang){
 });
 Route::get('/question/{qid}/answer/{aid}', 'AnswerController@show');
 Route::middleware(['bancheck', 'auth'])->group(function(){
+    Route::get('/import', 'ImportController@index');
     Route::post('/question/{qid}/answer/', 'AnswerController@store');
     Route::put('/question/{qid}/answer/{aid}', 'AnswerController@update');
     Route::delete('/question/{qid}/answer/{aid}', 'AnswerController@delete');
