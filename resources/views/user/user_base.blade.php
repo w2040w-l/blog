@@ -12,7 +12,7 @@
                 </div>
             @endif
             <div class=''>
-                <div class="col-md-offset-2 col-md-8">{{ $user->intro }}</div>
+                <div class="col-md-offset-2 col-md-8"><edit-intro ref='editIntro' iuid={{ $user->id }} iintro="{{ $user->intro }}"></edit-intro></div>
                 </br>
                 <ul class='list-inline float-right'>
                     <li class='list-inline-item'>{{ $user->approves()->count() }} {{ __('message.approves') }}</li>
@@ -24,6 +24,9 @@
             </div>
 
             @if(Auth::check())
+                @if(Auth::user()->id == $user->id)
+                    <edit-intro-button></edit-intro-button>
+                @endif
                 <follow-button ifollow={{ $user->followed()->count() }} iuid={{ $user->id }}
                 ihave={{ $user->hasFollowed(Auth::id())?1:0 }}></follow-button>
                 @if(Auth::user()->isroot == 1)

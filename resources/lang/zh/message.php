@@ -56,6 +56,6 @@
         'watch' => '关注',
         'unwatch' => '取消关注',
         'peoples_watching' => '人正在关注该问题',
-
+        'submit_intro' => '提交介绍',
     ];
     ?>

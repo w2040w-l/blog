@@ -32,6 +32,8 @@ Route::middleware(['bancheck', 'auth'])->group(function(){
     Route::put('/question/{qid}/answer/{aid}', 'AnswerController@update');
     Route::delete('/question/{qid}/answer/{aid}', 'AnswerController@delete');
 
+    Route::put('/user/{uid}/edit', 'UserController@update');
+
     Route::post('/question/{qid}/answer/{aid}/comment', 'CommentController@store');
     Route::delete('/question/{qid}/answer/{aid}/comment/{cid}', 'CommentController@delete');
 

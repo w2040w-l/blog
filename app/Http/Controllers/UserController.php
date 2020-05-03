@@ -48,6 +48,12 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
+    public function update(Request $request, $uid){
+        $user = User::find($uid);
+        $user->intro = $request->intro;
+        $user->save();
+        return $user;
+    }
     public function showQuestions($uid){
         $user = User::find($uid);
         $questions = $user->questions()->paginate(20);

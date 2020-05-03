@@ -45,6 +45,7 @@
         'comments' => 'comments',
         'edit' => 'edit',
         'submit_question' => 'submit question',
+        'submit_intro' => 'submit intro',
         'edit_tag' => 'edit tag',
         'follow' => 'follow',
         'unfollow' => 'unfollow',
