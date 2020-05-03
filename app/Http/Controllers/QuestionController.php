@@ -31,6 +31,9 @@ class QuestionController extends Controller{
         $nrecord->user_id = Auth::id();
         $nrecord->previous_qrecord = $record->id;
         $nrecord->question_id = $question->id;
+        if($question->status == -1){
+            return response(['errors' => ['update question' => ["question has been locked, can't be edited"]]], 424);
+        }
         if($record->title == $nrecord->title && $record->content == $nrecord->content){
             ;
         } else {
@@ -77,20 +80,37 @@ class QuestionController extends Controller{
     }
     public function show($id){
         $question = Question::find($id);
+        if($question == null){
+            abort(404);
+        } else if($question->status == 0 ) {
+            if(!Auth::check() || Auth::user()->isroot != 1)
+                abort(404);
+        }
         $record = Qrecord::find($question->qrecord_id);
         $answers = $question->answers;
         return view('question.show', [
             'answers' => $answers,
             'record' => $record,'question'=> $question]);
     }
-    public function delete($id){
-
+    public function delete(Request $request, $qid){
+        if(Auth::user()->isroot == 1){
+            $question = Question::find($qid);
+            if($question->status != 0)
+                $question->status = 0;
+            else if($question->status == 0)
+                $question->status = 1;
+            $question->save();
+            return redirect()->back();
+        }
     }
     public function lock(Request $request, $qid)
     {
         if(Auth::user()->isroot == 1){
             $question = Question::find($qid);
-            $question->status = -1;
+            if($question->status == 1)
+                $question->status = -1;
+            else if($question->status == -1)
+                $question->status = 1;
             $question->save();
             return redirect()->back();
         }

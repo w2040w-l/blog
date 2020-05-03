@@ -19,6 +19,7 @@
             @endif
             @if(Auth::user()->isroot == 1)
                 <a href="/question/{{ $question->id }}/lock"class='btn btn-danger btn-inline' >{{ __('message.lock') }}</a>
+                <a href="/question/{{ $question->id }}/delete"class='btn btn-danger btn-inline' >{{ __('message.delete') }}</a>
             @endif
         @endif
     </div>

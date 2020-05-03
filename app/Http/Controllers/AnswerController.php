@@ -11,6 +11,12 @@ class AnswerController extends Controller{
     public function show($pid, $aid){
         $answer = Answer::find($aid);
         $question = $answer->question;
+        if($question == null){
+            abort(404);
+        } else if($question->status == 0 ) {
+            if(!Auth::check() || Auth::user()->isroot != 1)
+                abort(404);
+        }
         $record = Qrecord::find($question->qrecord_id);
         return view('answer.show', ['record' => $record,'question'=> $question, 'answer' => $answer]);
     }

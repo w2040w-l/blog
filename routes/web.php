@@ -48,6 +48,7 @@ Route::middleware(['bancheck', 'auth'])->group(function(){
 
     Route::get('/user/{uid}/ban', 'UserController@lock');
     Route::get('/question/{pid}/lock', 'QuestionController@lock');
+    Route::get('/question/{pid}/delete', 'QuestionController@delete');
 });
 
 Route::get('/user/{uid}',function($uid){
