@@ -93,3 +93,4 @@ create table watches(
     user_id int,
     primary key(id)
 );
+INSERT INTO `users` VALUE (1,'root','$2y$10$XogyKy8HfYkpotMosQRegejDsmuQz8nFp6L6QEdIHq9Cpinc2zjxC',1,NULL,'2020-02-20 16:58:06','84yHLUmCPJ9DiGLfWXTFSfOZvuv8nYcaOhAlDdFGQ4OW9gZBnF7PEXQIMNsV',1);
