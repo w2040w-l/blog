@@ -6,7 +6,7 @@
             <li class="list-inline-item"><a class='btn btn-primary' href='/index/top'>
                 {{ __('message.highest_voted') }}</a></li>
         @else
-            <li class="list-inline-item"><a class='btn btn-default' href='/index/top'>
+            <li class="list-inline-item"><a class='btn btn-default' href='/index/top' dusk='highest'>
                 {{ __('message.highest_voted') }}</a></li>
             @endif
         @if($sort == 'now')

@@ -48,7 +48,7 @@
                                 <a href="/user/{{ Auth::id() }}" class="home"><span>{{ Auth::user()->username }}</span></a>
                                 </li>
                                 <li class=" list-inline-item">
-                                <a href="/logout" class="btn-link"><span>{{ __('message.logout') }}</span></a>
+                                <a href="/logout" class="btn-link" dusk='logout'><span>{{ __('message.logout') }}</span></a>
                                 </li>
                                 <change-password></change-password>
                             @else
