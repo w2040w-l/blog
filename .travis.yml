@@ -3,6 +3,9 @@ language: php
 php:
   - 7.3
 
+services:
+  - mysql
+
 addons:
   chrome: stable
 
@@ -10,7 +13,9 @@ install:
   - cp .env.testing .env
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
+  - php artisan config:cache
   - php artisan dusk:chrome-driver
+  - mysql -e 'source sql/all.sql'
 
 before_script:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
@@ -18,4 +23,5 @@ before_script:
 
 script:
   - php artisan dusk
+  - phpunit
 
