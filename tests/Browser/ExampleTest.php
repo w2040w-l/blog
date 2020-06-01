@@ -19,9 +19,6 @@ class ExampleTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/index/now')
                     ->click('@highest')->assertSee('question');
-            $browser->visit('/index/now')->with('#answer-55', function($answer){
-                $answer->assertVue('icount', 10, 'a.btn-sm');
-            });
         });
     }
 }
