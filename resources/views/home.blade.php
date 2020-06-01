@@ -29,4 +29,5 @@
         @component('component.answer-title', ['answer' => $answer])
         @endcomponent
     @endforeach
+    {{ $answers->links() }}
 @endsection
