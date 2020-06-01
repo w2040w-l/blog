@@ -22,16 +22,12 @@ class ExampleTest extends TestCase
     public function tearDown(): void{
         DB::rollBack();
     }
-    public function testBasicTest()
-    {
-        $this->assertTrue(true);
-    }
     public function testUserRegister(){
         $response = $this->json('POST', '/register', ['username' => '', 'password' => 'feeffefe']);
         $response->assertStatus(422);
         $response->assertJson(['message' => 'The given data was invalid.'])->assertJson(['errors' => ['username' => ['The username field is required.']]]);
     }
-    public function test2()
+    public function testUserLogin()
     {
         $response = $this->json('POST','/register',['username' => 'phptest', 'password' => '111111']);
         $response->assertStatus(302);
@@ -40,7 +36,7 @@ class ExampleTest extends TestCase
         $user = factory(User::class)->make();
         $response3 = $this->actingAs($user)->get('/tag/get');
     }
-    public function testRe(){
+    public function testIndex(){
         $response = $this->get('/');
         $response->assertRedirect('/index');
         $response2 = $this->get('/index');
